@@ -1,0 +1,219 @@
+EESchema Schematic File Version 4
+LIBS:projector-screen-controller-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 4
+Title "Projector Screen Controller"
+Date ""
+Rev "0.1"
+Comp "Chris Luke"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 "Power supplies"
+$EndDescr
+$Comp
+L Regulator_Linear:L78L05_TO92 U3
+U 1 1 5D6EF6FD
+P 7900 3250
+F 0 "U3" H 7900 3492 50  0000 C CNN
+F 1 "L78L05_TO92" H 7900 3401 50  0000 C CNN
+F 2 "TO_SOT_Packages_THT:TO-92_Molded_Narrow_Oval" H 7900 3475 50  0001 C CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 7900 3200 50  0001 C CNN
+	1    7900 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 5D6F1CC2
+P 7900 3850
+F 0 "#PWR011" H 7900 3600 50  0001 C CNN
+F 1 "GND" H 7905 3677 50  0000 C CNN
+F 2 "" H 7900 3850 50  0001 C CNN
+F 3 "" H 7900 3850 50  0001 C CNN
+	1    7900 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 3550 7900 3800
+$Comp
+L power:+5V #PWR012
+U 1 1 5D6F2364
+P 8550 3100
+F 0 "#PWR012" H 8550 2950 50  0001 C CNN
+F 1 "+5V" H 8565 3273 50  0000 C CNN
+F 2 "" H 8550 3100 50  0001 C CNN
+F 3 "" H 8550 3100 50  0001 C CNN
+	1    8550 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR010
+U 1 1 5D6F247A
+P 7250 3100
+F 0 "#PWR010" H 7250 2950 50  0001 C CNN
+F 1 "+12V" H 7265 3273 50  0000 C CNN
+F 2 "" H 7250 3100 50  0001 C CNN
+F 3 "" H 7250 3100 50  0001 C CNN
+	1    7250 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 3100 8550 3250
+Wire Wire Line
+	8550 3250 8200 3250
+Wire Wire Line
+	7250 3100 7250 3250
+Wire Wire Line
+	7250 3250 7600 3250
+$Comp
+L Device:C C9
+U 1 1 5D6F3384
+P 7250 3550
+F 0 "C9" H 7365 3596 50  0000 L CNN
+F 1 "0.33uF" H 7365 3505 50  0000 L CNN
+F 2 "Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 7288 3400 50  0001 C CNN
+F 3 "~" H 7250 3550 50  0001 C CNN
+	1    7250 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C10
+U 1 1 5D6F4B58
+P 8550 3550
+F 0 "C10" H 8665 3596 50  0000 L CNN
+F 1 "0.1uF" H 8665 3505 50  0000 L CNN
+F 2 "Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 8588 3400 50  0001 C CNN
+F 3 "~" H 8550 3550 50  0001 C CNN
+	1    8550 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 3700 8550 3800
+Wire Wire Line
+	8550 3800 7900 3800
+Connection ~ 7900 3800
+Wire Wire Line
+	7900 3800 7900 3850
+Wire Wire Line
+	7900 3800 7250 3800
+Wire Wire Line
+	7250 3800 7250 3700
+Wire Wire Line
+	7250 3250 7250 3400
+Connection ~ 7250 3250
+Wire Wire Line
+	8550 3250 8550 3400
+Connection ~ 8550 3250
+$Comp
+L power:LINE #PWR0104
+U 1 1 5D6F8ADF
+P 2200 2550
+F 0 "#PWR0104" H 2200 2400 50  0001 C CNN
+F 1 "LINE" H 2217 2723 50  0000 C CNN
+F 2 "" H 2200 2550 50  0001 C CNN
+F 3 "" H 2200 2550 50  0001 C CNN
+	1    2200 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:NEUT #PWR0105
+U 1 1 5D6F926D
+P 1850 2550
+F 0 "#PWR0105" H 1850 2400 50  0001 C CNN
+F 1 "NEUT" H 1867 2723 50  0000 C CNN
+F 2 "" H 1850 2550 50  0001 C CNN
+F 3 "" H 1850 2550 50  0001 C CNN
+	1    1850 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chris_Power:PSK-S20C-12 PS1
+U 1 1 5D779061
+P 3650 3350
+F 0 "PS1" H 3650 3675 50  0000 C CNN
+F 1 "PSK-S20C-12" H 3650 3584 50  0000 C CNN
+F 2 "Chris_Power:ACDC-Conv_CUI-PSK-S20C" H 3650 3050 50  0001 C CNN
+F 3 "https://www.cui.com/product/resource/psk-s20c.pdf" H 4050 3000 50  0001 C CNN
+	1    3650 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR017
+U 1 1 5D77AE6B
+P 5100 3850
+F 0 "#PWR017" H 5100 3600 50  0001 C CNN
+F 1 "GND" H 5105 3677 50  0000 C CNN
+F 2 "" H 5100 3850 50  0001 C CNN
+F 3 "" H 5100 3850 50  0001 C CNN
+	1    5100 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C11
+U 1 1 5D77B64E
+P 4300 3400
+F 0 "C11" H 4415 3446 50  0000 L CNN
+F 1 "1uF/25V" H 4415 3355 50  0000 L CNN
+F 2 "Capacitors_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 4338 3250 50  0001 C CNN
+F 3 "~" H 4300 3400 50  0001 C CNN
+	1    4300 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 3250 4300 3250
+Wire Wire Line
+	4050 3450 4150 3450
+Wire Wire Line
+	4150 3450 4150 3550
+Wire Wire Line
+	4150 3550 4300 3550
+Wire Wire Line
+	2200 2550 2200 3250
+Wire Wire Line
+	2200 3250 3250 3250
+Wire Wire Line
+	1850 2550 1850 3450
+Wire Wire Line
+	1850 3450 3250 3450
+Wire Wire Line
+	5100 3550 5100 3850
+$Comp
+L power:+12V #PWR015
+U 1 1 5D77DEEE
+P 5100 3100
+F 0 "#PWR015" H 5100 2950 50  0001 C CNN
+F 1 "+12V" H 5115 3273 50  0000 C CNN
+F 2 "" H 5100 3100 50  0001 C CNN
+F 3 "" H 5100 3100 50  0001 C CNN
+	1    5100 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 3250 5100 3100
+$Comp
+L Device:CP C12
+U 1 1 5D77F0B2
+P 4900 3400
+F 0 "C12" H 5018 3446 50  0000 L CNN
+F 1 "470uF/25V" H 5018 3355 50  0000 L CNN
+F 2 "Capacitors_THT:CP_Radial_D10.0mm_P2.50mm" H 4938 3250 50  0001 C CNN
+F 3 "~" H 4900 3400 50  0001 C CNN
+	1    4900 3400
+	1    0    0    -1  
+$EndComp
+Connection ~ 4300 3250
+Connection ~ 4300 3550
+Connection ~ 4900 3250
+Wire Wire Line
+	4900 3250 5100 3250
+Connection ~ 4900 3550
+Wire Wire Line
+	4900 3550 5100 3550
+Wire Wire Line
+	4300 3550 4900 3550
+Wire Wire Line
+	4300 3250 4900 3250
+$EndSCHEMATC

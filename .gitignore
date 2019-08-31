@@ -1,0 +1,49 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.obj
+*.elf
+
+# Linker output
+*.map
+
+# Libraries
+*.lib
+*.a
+
+# Executables
+*.exe
+*.out
+*.hex
+
+# Directory structures to ignore
+/src/build/
+/src/dist/
+/src/nbproject/private/
+
+# Generated project files
+/src/nbproject/*.mk
+/src/nbproject/*.bash
+/src/nbproject/*.properties
+
+# Various temporary/backup files
+*.bak
+*-bak
+*.bck
+_saved*.sch
+_autosave-*.kicad_pcb
+
+# Vi
+*.sw[op]
+
+# Various intermediate files
+board/projector-screen-controller.xml
+board/projector-screen-controller.csv
+board/projector-screen-controller.dsn
+board/~$projector-screen-controller.xlsx
+board/projector-screen-controller.xlsx
+board/gerber/gerber.zip
+board/projector-screen-controller.sch.svg
+*.pdf
