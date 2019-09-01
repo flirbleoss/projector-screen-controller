@@ -6,16 +6,16 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Projector Screen Controller"
-Date ""
+Date "2019-08-31"
 Rev "0.1"
 Comp "Chris Luke"
-Comment1 ""
+Comment1 "https://github.com/flirbleoss/projector-screen-controller"
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 3750 2200 1650 1250
+S 3750 2200 1650 1350
 U 5D6871CF
 F0 "MCU" 50
 F1 "MCU.sch" 50
@@ -27,8 +27,10 @@ F6 "D1_UP_TTL" O R 5400 2350 50
 F7 "D1_DN_TTL" O R 5400 2450 50 
 F8 "D2_UP_TTL" O R 5400 2550 50 
 F9 "D2_DN_TTL" O R 5400 2650 50 
-F10 "BUTTON_UP" I L 3750 3150 50 
-F11 "BUTTON_DN" I L 3750 3250 50 
+F10 "BUT1_UP" I L 3750 3250 50 
+F11 "BUT1_DN" I L 3750 3150 50 
+F12 "BUT2_UP" I L 3750 3350 50 
+F13 "BUT2_DN" I L 3750 3450 50 
 $EndSheet
 $Sheet
 S 6600 2200 1700 1250
@@ -49,6 +51,12 @@ S 3750 4850 1700 1200
 U 5D68B9FF
 F0 "Power" 50
 F1 "Power.sch" 50
+F2 "LINE" I L 3750 5200 50 
+F3 "NEUT" I L 3750 5400 50 
+F4 "+12V" O R 5450 5200 50 
+F5 "+5V" O R 5450 5300 50 
+F6 "GND" B R 5450 5750 50 
+F7 "EARTH" U L 3750 5300 50 
 $EndSheet
 $Comp
 L power:NEUT #PWR0101
@@ -75,12 +83,12 @@ $EndComp
 $Comp
 L power:Earth_Protective #PWR0103
 U 1 1 5D6FA28C
-P 2250 5600
-F 0 "#PWR0103" H 2500 5350 50  0001 C CNN
-F 1 "Earth_Protective" H 2700 5450 50  0001 C CNN
-F 2 "" H 2250 5500 50  0001 C CNN
-F 3 "~" H 2250 5500 50  0001 C CNN
-	1    2250 5600
+P 2250 5900
+F 0 "#PWR0103" H 2500 5650 50  0001 C CNN
+F 1 "Earth_Protective" H 2700 5750 50  0001 C CNN
+F 2 "" H 2250 5800 50  0001 C CNN
+F 3 "~" H 2250 5800 50  0001 C CNN
+	1    2250 5900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -103,8 +111,6 @@ Wire Wire Line
 Wire Wire Line
 	1600 5400 2400 5400
 Wire Wire Line
-	2400 5400 2400 5150
-Wire Wire Line
 	5400 2350 6600 2350
 Wire Wire Line
 	5400 2450 6600 2450
@@ -117,7 +123,7 @@ L Connector:Screw_Terminal_01x03 J3
 U 1 1 5D704346
 P 1350 2050
 F 0 "J3" H 1268 2367 50  0000 C CNN
-F 1 "RS232 #1" H 1268 2276 50  0000 C CNN
+F 1 "MCV-3-G" H 1268 2276 50  0000 C CNN
 F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 2050 50  0001 C CNN
 F 3 "~" H 1350 2050 50  0001 C CNN
 	1    1350 2050
@@ -128,7 +134,7 @@ L Connector:Screw_Terminal_01x03 J4
 U 1 1 5D705965
 P 1350 2600
 F 0 "J4" H 1268 2917 50  0000 C CNN
-F 1 "RS232 #2" H 1268 2826 50  0000 C CNN
+F 1 "MCV-3-G" H 1268 2826 50  0000 C CNN
 F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 2600 50  0001 C CNN
 F 3 "~" H 1350 2600 50  0001 C CNN
 	1    1350 2600
@@ -139,40 +145,25 @@ L Connector:Screw_Terminal_01x03 J5
 U 1 1 5D7067C7
 P 1350 3150
 F 0 "J5" H 1268 3467 50  0000 C CNN
-F 1 "Buttons" H 1268 3376 50  0000 C CNN
+F 1 "MCV-3-G" H 1268 3376 50  0000 C CNN
 F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 3150 50  0001 C CNN
 F 3 "~" H 1350 3150 50  0001 C CNN
 	1    1350 3150
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	1550 3050 2650 3050
-Wire Wire Line
-	2650 3050 2650 3150
-Wire Wire Line
-	2650 3150 3750 3150
-Wire Wire Line
-	1550 3250 3750 3250
 $Comp
 L power:GND #PWR013
 U 1 1 5D70709B
-P 1800 3550
-F 0 "#PWR013" H 1800 3300 50  0001 C CNN
-F 1 "GND" H 1805 3377 50  0000 C CNN
-F 2 "" H 1800 3550 50  0001 C CNN
-F 3 "" H 1800 3550 50  0001 C CNN
-	1    1800 3550
+P 1800 3950
+F 0 "#PWR013" H 1800 3700 50  0001 C CNN
+F 1 "GND" H 1805 3777 50  0000 C CNN
+F 2 "" H 1800 3950 50  0001 C CNN
+F 3 "" H 1800 3950 50  0001 C CNN
+	1    1800 3950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1550 3150 1800 3150
-Wire Wire Line
-	1800 3150 1800 3550
-Wire Wire Line
 	1550 2600 1800 2600
-Wire Wire Line
-	1800 2600 1800 3150
-Connection ~ 1800 3150
 Wire Wire Line
 	1550 2050 1800 2050
 Wire Wire Line
@@ -264,46 +255,109 @@ Wire Wire Line
 	1600 5200 1700 5200
 Wire Wire Line
 	2000 5200 2100 5200
-$Comp
-L Device:Varistor RV1
-U 1 1 5D769A2F
-P 2600 5350
-F 0 "RV1" H 2703 5396 50  0000 L CNN
-F 1 "Varistor" H 2703 5305 50  0000 L CNN
-F 2 "Varistors:RV_Disc_D15.5_W7.2_P7.5" V 2530 5350 50  0001 C CNN
-F 3 "~" H 2600 5350 50  0001 C CNN
-	1    2600 5350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2250 5300 2250 5500
-Wire Wire Line
-	2600 5500 2250 5500
-Connection ~ 2250 5500
-Wire Wire Line
-	2250 5500 2250 5600
-Wire Wire Line
-	2100 5200 2600 5200
 Connection ~ 2100 5200
+Text Notes 850  2100 0    50   ~ 0
+RS232 #1
+Text Notes 850  2600 0    50   ~ 0
+RS232 #2
+Text Notes 850  3150 0    50   ~ 0
+Buttons #1
 $Comp
-L Device:Varistor RV2
-U 1 1 5D76EEBE
-P 3100 5350
-F 0 "RV2" H 3203 5396 50  0000 L CNN
-F 1 "Varistor" H 3203 5305 50  0000 L CNN
-F 2 "Varistors:RV_Disc_D15.5_W7.2_P7.5" V 3030 5350 50  0001 C CNN
-F 3 "~" H 3100 5350 50  0001 C CNN
-	1    3100 5350
+L Connector:Screw_Terminal_01x03 J7
+U 1 1 5D6D108D
+P 1350 3700
+F 0 "J7" H 1268 4017 50  0000 C CNN
+F 1 "MCV-3-G" H 1268 3926 50  0000 C CNN
+F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 3700 50  0001 C CNN
+F 3 "~" H 1350 3700 50  0001 C CNN
+	1    1350 3700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 2600 1800 3050
+Wire Wire Line
+	1550 3050 1800 3050
+Connection ~ 1800 3050
+Wire Wire Line
+	1550 3150 3750 3150
+Wire Wire Line
+	1550 3250 3750 3250
+Wire Wire Line
+	1550 3600 1800 3600
+Wire Wire Line
+	1800 3050 1800 3600
+Connection ~ 1800 3600
+Wire Wire Line
+	1800 3600 1800 3950
+Wire Wire Line
+	3750 3450 2650 3450
+Wire Wire Line
+	2650 3450 2650 3800
+Wire Wire Line
+	2650 3800 1550 3800
+Wire Wire Line
+	3750 3350 2550 3350
+Wire Wire Line
+	2550 3350 2550 3700
+Wire Wire Line
+	2550 3700 1550 3700
+Text Notes 850  3700 0    50   ~ 0
+Buttons #2
+Wire Wire Line
+	2400 5000 2400 5400
+Connection ~ 2400 5400
+$Comp
+L power:GND #PWR0104
+U 1 1 5D6F4A37
+P 5750 6000
+F 0 "#PWR0104" H 5750 5750 50  0001 C CNN
+F 1 "GND" H 5755 5827 50  0000 C CNN
+F 2 "" H 5750 6000 50  0001 C CNN
+F 3 "" H 5750 6000 50  0001 C CNN
+	1    5750 6000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3100 5500 2600 5500
-Connection ~ 2600 5500
+	5450 5750 5750 5750
 Wire Wire Line
-	3100 5200 3100 5150
+	5750 5750 5750 6000
+$Comp
+L power:+12V #PWR0105
+U 1 1 5D6F727B
+P 5750 5000
+F 0 "#PWR0105" H 5750 4850 50  0001 C CNN
+F 1 "+12V" H 5765 5173 50  0000 C CNN
+F 2 "" H 5750 5000 50  0001 C CNN
+F 3 "" H 5750 5000 50  0001 C CNN
+	1    5750 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0109
+U 1 1 5D6F7C73
+P 6000 5000
+F 0 "#PWR0109" H 6000 4850 50  0001 C CNN
+F 1 "+5V" H 6015 5173 50  0000 C CNN
+F 2 "" H 6000 5000 50  0001 C CNN
+F 3 "" H 6000 5000 50  0001 C CNN
+	1    6000 5000
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3100 5150 2400 5150
-Connection ~ 2400 5150
+	5750 5000 5750 5200
 Wire Wire Line
-	2400 5150 2400 5000
+	5750 5200 5450 5200
+Wire Wire Line
+	6000 5000 6000 5300
+Wire Wire Line
+	6000 5300 5450 5300
+Wire Wire Line
+	2100 5200 3750 5200
+Wire Wire Line
+	2400 5400 3750 5400
+Wire Wire Line
+	2250 5300 2250 5900
+Wire Wire Line
+	2250 5300 3750 5300
+Connection ~ 2250 5300
 $EndSCHEMATC

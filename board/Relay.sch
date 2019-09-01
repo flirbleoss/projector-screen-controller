@@ -6,10 +6,10 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 4
 Title "Projector Screen Controller"
-Date ""
+Date "2019-08-31"
 Rev "0.1"
 Comp "Chris Luke"
-Comment1 ""
+Comment1 "https://github.com/flirbleoss/projector-screen-controller"
 Comment2 ""
 Comment3 ""
 Comment4 "Relays and drivers"

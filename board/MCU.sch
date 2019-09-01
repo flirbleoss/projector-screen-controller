@@ -6,10 +6,10 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 4
 Title "Projector Screen Controller"
-Date ""
+Date "2019-08-31"
 Rev "0.1"
 Comp "Chris Luke"
-Comment1 ""
+Comment1 "https://github.com/flirbleoss/projector-screen-controller"
 Comment2 ""
 Comment3 ""
 Comment4 "Microcontroller and communications"
@@ -279,9 +279,9 @@ D2_DN_TTL
 Wire Wire Line
 	1950 4400 2500 4400
 Text HLabel 7150 2700 1    50   Input ~ 0
-BUTTON_UP
+BUT1_UP
 Text HLabel 7250 2700 1    50   Input ~ 0
-BUTTON_DN
+BUT1_DN
 Wire Wire Line
 	7150 2700 7150 3500
 Wire Wire Line
@@ -443,4 +443,16 @@ Wire Wire Line
 Wire Wire Line
 	850  3900 2500 3900
 Connection ~ 850  4250
+Text HLabel 7350 2700 1    50   Input ~ 0
+BUT2_UP
+Text HLabel 7450 2700 1    50   Input ~ 0
+BUT2_DN
+Wire Wire Line
+	7350 2700 7350 3700
+Wire Wire Line
+	7350 3700 6900 3700
+Wire Wire Line
+	7450 2700 7450 3800
+Wire Wire Line
+	7450 3800 6900 3800
 $EndSCHEMATC
