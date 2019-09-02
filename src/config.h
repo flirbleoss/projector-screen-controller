@@ -17,8 +17,7 @@ extern "C" {
 // Whether we want to use the watchdog timer
 //#define USE_WATCHDOG
 
-
-//#define _XTAL_FREQ (32000000)    // 32MHz
+#define _XTAL_FREQ (32000000)   // 32MHz
 
 // Values for Timer1
 #define SET_TMR1_CS (0b11)      // LFINTOSC = 31KHz
@@ -43,7 +42,7 @@ extern "C" {
 
 // Values for Timer0
 #define SET_TMR0_CS (0b010)     // Internal clock (Fosc/4)
-#define SET_TMR0_PS (0b1111)     // 1:32768 prescaler (~4ms?)
+#define SET_TMR0_PS (0b1111)    // 1:32768 prescaler (~4ms?)
 
 #define RESET_TMR0() do { \
         TMR0 = 0; \
@@ -56,6 +55,15 @@ extern "C" {
         TMR0IF = 0; \
     } while (0)
 
+
+// UART settings
+#define UART_BRGH 1     // low/high baud rate
+#define UART_BRG16 1    // 8/16 bit timer
+#define UART_SPBRG 832  // 9600 baud with 32MHz fOSC
+
+// UART handling settings
+#define UART_TX_BUF 16  // Send buffer size, per-UART
+#define UART_RX_BUF 4   // Receive buffer size, per-UART
 
 #ifdef	__cplusplus
 }

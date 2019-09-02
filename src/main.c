@@ -13,7 +13,6 @@
 // Incremented by a timer. See TMR1_INTERVAL.
 volatile uint8_t tick;
 
-
 /* Initialize the hardware peripherals.
  * 
  * Clock source and speed is set by CONFIG bits in pic_config.c
@@ -29,22 +28,19 @@ volatile uint8_t tick;
  * RA0,1,3 are attached to the ICSP header.
  * RA4 may be an LED in future.
  */
-static void init(void) {
+static void hardware_init(void) {
     // Disable unused modules
     PMD2 = 0xff;        // DAC, ADC, CMP, ZCD
     PMD3 = 0xff;        // PWM, CCP
     PMD5 = 0xff;        // CLC
 
-    // Input pin re-mapping
-    RX1DTPPS = 0x16;    // UART 1 RX on RC6
-    TX1CKPPS = 0x14;    // UART 1 TX on RC4
-    RX2DTPPS = 0x17;    // UART 2 RX on RC7
-    TX2CKPPS = 0x15;    // UART 2 TX on RC5
+    // Pin re-mapping
+    RC4PPS = 0x0f;      // RC4 -> UART 1 TX
+    RC5PPS = 0x11;      // RC5 -> UART 2 TX
+    RX1DTPPS = 0x16;    // RC6 -> UART 1 RX
+    RX2DTPPS = 0x17;    // RC7 ->UART 2 RX
 
-    RC4PPS = 0x0f;      // RC4 -> TX1
-    RC5PPS = 0x11;      // RC5 -> TX2
-
-    // No more port re-mapping
+    // Disable any further more port re-mapping
     PPSLOCK = 0x55;     // Unlock the register
     PPSLOCK = 0xaa;     // Unlock the register
     PPSLOCKbits.PPSLOCKED = 1;  // Lock port maps
@@ -54,7 +50,7 @@ static void init(void) {
     WPUC = 0x0f;        // RC0,1,2,3 have weak pull-ups
     TRISA = 0xfb;       // RA2 is output
     TRISB = 0x00;       // Port B is all outputs
-    TRISC = 0xff;       // Port C is all inputs (uart will override tx pins))
+    TRISC = 0xcf;       // Port C is all inputs (UART will manage TX pins)
 
     // Setup interrupt-on-change for RC0,1,2,3
     IOCCP = 0x0f;       // IOC on rising edge of RC0,1,2,3
@@ -64,12 +60,22 @@ static void init(void) {
     IOCIE = 1;          // IOC on
 
     // Setup UART1
-    // TODO
-    RC2IE = 1;          // Interrupt on receive
+    SP1BRG = UART_SPBRG;
+    TX1STAbits.BRGH = UART_BRGH;
+    TX1STAbits.TXEN = 1;    // Enable transmitter
+    TX1STAbits.SYNC = 0;    // Asynchronous
+    RC1STAbits.CREN = 1;    // Enable receiver
+    RC1STAbits.SPEN = 1;    // Enable UART
+    RC1IE = 1;              // Interrupt on receive
 
     // Setup UART2
-    // TODO
-    RC1IE = 1;          // Interrupt on receive
+    SP2BRG = UART_SPBRG;
+    TX2STAbits.BRGH = UART_BRGH;
+    TX2STAbits.TXEN = 1;    // Enable transmitter
+    TX2STAbits.SYNC = 0;    // Asynchronous
+    RC2STAbits.CREN = 1;    // Enable receiver
+    RC2STAbits.SPEN = 1;    // Enable UART
+    RC2IE = 1;              // Interrupt on receive
 
     // Setup Timer1 for our tick
     T1CLKbits.CS = SET_TMR1_CS;
@@ -96,10 +102,15 @@ static void init(void) {
 
 // Fire it all up. This function is called when the processor starts up.
 // It has to program any required peripherals and then run the program loop.
+
 void main(void) {
     // Initialize the peripherals
-    init();
-    
+    hardware_init();
+    uart_init();
+
+    uart_send(UART_1, (char *) "#PJSC UART1\n");
+    uart_send(UART_2, (char *) "#PJSC UART2\n");
+
     while (1) {
         // Iterate on controller operations
         // do_controller();
@@ -115,6 +126,7 @@ void main(void) {
 // Interrupt handler; invoked by the processor whenever an interrupt
 // occurs, here we have to work out which peripheral triggered the
 // event and act accordingly.
+
 static void interrupt interrupt_handler(void) {
     // Timer1 expired? This is our tick
     if (TMR1IE && TMR1IF) {
@@ -158,15 +170,30 @@ static void interrupt interrupt_handler(void) {
 
     // UART1 receive?
     if (RC1IE && RC1IF) {
-        // uart_read(1);
+        // Reading all the buffered bytes clears the interrupt flag
+        uart_int_recv(UART_1);
+    }
 
-        // Read all the buffered bytes to clear the flag
+    // UART1 can transmit?
+    if (TX1IE && TX1IF) {
+        TX1IE = 0;
+        TX1IF = 0;
+
+        uart_int_send(UART_1);
     }
 
     // UART2 receive?
     if (RC2IE && RC2IF) {
-        // uart_read(2);
-
-        // Read all the buffered bytes to clear the flag
+        // Reading all the buffered bytes clears the flag
+        uart_int_recv(UART_2);
     }
+
+    // UART2 can transmit?
+    if (TX2IE && TX2IF) {
+        TX2IE = 0;
+        TX2IF = 0;
+
+        uart_int_send(UART_2);
+    }
+
 }
