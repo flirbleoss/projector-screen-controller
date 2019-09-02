@@ -42,8 +42,11 @@ _autosave-*.kicad_pcb
 board/projector-screen-controller.xml
 board/projector-screen-controller.csv
 board/projector-screen-controller.dsn
+board/projector-screen-controller.net
 board/~$projector-screen-controller.xlsx
 board/projector-screen-controller.xlsx
-board/gerber/gerber.zip
+board/gerbers/gerber.zip
+board/gerbers.zip
+board/fp-info-cache
 board/projector-screen-controller.sch.svg
 *.pdf
