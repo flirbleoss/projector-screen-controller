@@ -246,7 +246,7 @@ U 1 1 5D765C3A
 P 1850 5200
 F 0 "F1" V 1653 5200 50  0000 C CNN
 F 1 "5A" V 1744 5200 50  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_open_universal_Type-III" V 1780 5200 50  0001 C CNN
+F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_open_inline_Type-I" V 1780 5200 50  0001 C CNN
 F 3 "~" H 1850 5200 50  0001 C CNN
 	1    1850 5200
 	0    1    1    0   

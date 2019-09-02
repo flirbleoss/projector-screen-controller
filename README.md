@@ -64,17 +64,4 @@ suppression.
 
 * Verify spacing of connectors to edge wrt the case lid.
 * Validate board and hole geometry one more time.
-* Find a better fuse footprint, or a fuse holder part that matches
-  the footprint.
-* Find a TVS diode.
 * Write the firmware.
-
-## Parts left to order
-
-* 3 pin Phoenix Context MCV-6
-* 2 pin MCV-2 for power out?
-* 20 pin pic?  (PIC16F15345)
-* IC sockets
-* Relays Panasonic JS1-12V-F
-* 470uF/25V
-* TVS diode

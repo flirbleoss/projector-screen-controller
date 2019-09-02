@@ -94,27 +94,19 @@ Wire Wire Line
 	4050 3250 4300 3250
 Wire Wire Line
 	4050 3450 4150 3450
-Wire Wire Line
-	4150 3450 4150 3550
-Wire Wire Line
-	4150 3550 4300 3550
 $Comp
 L Device:CP C12
 U 1 1 5D77F0B2
 P 4900 3400
 F 0 "C12" H 5018 3446 50  0000 L CNN
 F 1 "470uF/25V" H 5018 3355 50  0000 L CNN
-F 2 "Capacitors_THT:CP_Radial_D10.0mm_P2.50mm" H 4938 3250 50  0001 C CNN
+F 2 "Capacitors_THT:CP_Radial_D10.0mm_P2.50mm_P5.00mm" H 4938 3250 50  0001 C CNN
 F 3 "~" H 4900 3400 50  0001 C CNN
 	1    4900 3400
 	1    0    0    -1  
 $EndComp
 Connection ~ 4300 3250
-Connection ~ 4300 3550
 Connection ~ 4900 3250
-Connection ~ 4900 3550
-Wire Wire Line
-	4300 3550 4900 3550
 Wire Wire Line
 	4300 3250 4900 3250
 Text HLabel 1700 3250 0    50   Input ~ 0
@@ -201,17 +193,16 @@ L Device:D_TVS D5
 U 1 1 5D7077D8
 P 5650 3400
 F 0 "D5" V 5604 3479 50  0000 L CNN
-F 1 "D_TVS" V 5695 3479 50  0000 L CNN
+F 1 "15V" V 5695 3479 50  0000 L CNN
 F 2 "Diodes_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 5650 3400 50  0001 C CNN
-F 3 "~" H 5650 3400 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/427/15ke-240293.pdf" H 5650 3400 50  0001 C CNN
+F 4 "Vishay" H 5650 3400 50  0001 C CNN "mfr"
+F 5 "1.5KE15CA-E3/54" H 5650 3400 50  0001 C CNN "part#"
 	1    5650 3400
 	0    1    1    0   
 $EndComp
 Wire Wire Line
 	5650 3550 5650 3800
-Connection ~ 5650 3550
-Wire Wire Line
-	4900 3550 5650 3550
 Wire Wire Line
 	5650 3250 5650 2500
 Connection ~ 5650 3250
@@ -287,4 +278,19 @@ Wire Wire Line
 Connection ~ 9150 2650
 Wire Wire Line
 	9150 2650 9650 2650
+Wire Wire Line
+	4150 3800 4300 3800
+Connection ~ 5650 3800
+Wire Wire Line
+	4900 3550 4900 3800
+Connection ~ 4900 3800
+Wire Wire Line
+	4900 3800 5650 3800
+Wire Wire Line
+	4300 3550 4300 3800
+Connection ~ 4300 3800
+Wire Wire Line
+	4300 3800 4900 3800
+Wire Wire Line
+	4150 3450 4150 3800
 $EndSCHEMATC
