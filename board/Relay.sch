@@ -25,22 +25,14 @@ F 3 "http://www.ti.com/lit/ds/symlink/uln2003a.pdf" H 2650 2500 50  0001 C CNN
 	1    2550 2700
 	1    0    0    -1  
 $EndComp
-Text HLabel 1500 2500 0    50   Input ~ 0
+Text HLabel 1050 2500 0    50   Input ~ 0
 D1_UP_TTL
-Text HLabel 1500 2600 0    50   Input ~ 0
+Text HLabel 1050 2600 0    50   Input ~ 0
 D1_DN_TTL
-Text HLabel 1500 2700 0    50   Input ~ 0
+Text HLabel 1050 2700 0    50   Input ~ 0
 D2_UP_TTL
-Text HLabel 1500 2800 0    50   Input ~ 0
+Text HLabel 1050 2800 0    50   Input ~ 0
 D2_DN_TTL
-Wire Wire Line
-	1500 2500 2150 2500
-Wire Wire Line
-	1500 2600 2150 2600
-Wire Wire Line
-	1500 2700 2150 2700
-Wire Wire Line
-	1500 2800 2150 2800
 $Comp
 L power:GND #PWR0106
 U 1 1 5D7017FB
@@ -331,4 +323,158 @@ Wire Wire Line
 Connection ~ 7850 3300
 Wire Wire Line
 	7850 3300 7850 4300
+Wire Wire Line
+	1050 2500 1150 2500
+Wire Wire Line
+	1050 2600 1400 2600
+Wire Wire Line
+	1050 2700 1650 2700
+Wire Wire Line
+	1050 2800 1900 2800
+$Comp
+L Device:R R7
+U 1 1 5D6E4821
+P 1900 3050
+F 0 "R7" H 1970 3096 50  0000 L CNN
+F 1 "R" H 1970 3005 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1830 3050 50  0001 C CNN
+F 3 "~" H 1900 3050 50  0001 C CNN
+	1    1900 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 5D6E54AB
+P 1650 3050
+F 0 "R6" H 1720 3096 50  0000 L CNN
+F 1 "R" H 1720 3005 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1580 3050 50  0001 C CNN
+F 3 "~" H 1650 3050 50  0001 C CNN
+	1    1650 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5D6E6CF6
+P 1400 3050
+F 0 "R5" H 1470 3096 50  0000 L CNN
+F 1 "R" H 1470 3005 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1330 3050 50  0001 C CNN
+F 3 "~" H 1400 3050 50  0001 C CNN
+	1    1400 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5D6E8437
+P 1150 3050
+F 0 "R4" H 1220 3096 50  0000 L CNN
+F 1 "R" H 1220 3005 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1080 3050 50  0001 C CNN
+F 3 "~" H 1150 3050 50  0001 C CNN
+	1    1150 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D8
+U 1 1 5D6E9A8E
+P 1150 3450
+F 0 "D8" V 1200 3400 50  0000 R CNN
+F 1 "LED" V 1100 3400 50  0000 R CNN
+F 2 "LEDs:LED_D3.0mm" H 1150 3450 50  0001 C CNN
+F 3 "~" H 1150 3450 50  0001 C CNN
+	1    1150 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D9
+U 1 1 5D6EA810
+P 1400 3450
+F 0 "D9" V 1450 3400 50  0000 R CNN
+F 1 "LED" V 1350 3400 50  0000 R CNN
+F 2 "LEDs:LED_D3.0mm" H 1400 3450 50  0001 C CNN
+F 3 "~" H 1400 3450 50  0001 C CNN
+	1    1400 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D10
+U 1 1 5D6EC3F0
+P 1650 3450
+F 0 "D10" V 1700 3400 50  0000 R CNN
+F 1 "LED" V 1600 3400 50  0000 R CNN
+F 2 "LEDs:LED_D3.0mm" H 1650 3450 50  0001 C CNN
+F 3 "~" H 1650 3450 50  0001 C CNN
+	1    1650 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D11
+U 1 1 5D6EE0A2
+P 1900 3450
+F 0 "D11" V 1950 3400 50  0000 R CNN
+F 1 "LED" V 1850 3400 50  0000 R CNN
+F 2 "LEDs:LED_D3.0mm" H 1900 3450 50  0001 C CNN
+F 3 "~" H 1900 3450 50  0001 C CNN
+	1    1900 3450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1150 2500 1150 2900
+Connection ~ 1150 2500
+Wire Wire Line
+	1150 2500 2150 2500
+Wire Wire Line
+	1400 2600 1400 2900
+Connection ~ 1400 2600
+Wire Wire Line
+	1400 2600 2150 2600
+Wire Wire Line
+	1650 2700 1650 2900
+Connection ~ 1650 2700
+Wire Wire Line
+	1650 2700 2150 2700
+Wire Wire Line
+	1900 2800 1900 2900
+Connection ~ 1900 2800
+Wire Wire Line
+	1900 2800 2150 2800
+Wire Wire Line
+	1150 3200 1150 3300
+Wire Wire Line
+	1400 3200 1400 3300
+Wire Wire Line
+	1650 3200 1650 3300
+Wire Wire Line
+	1900 3200 1900 3300
+$Comp
+L power:GND #PWR0110
+U 1 1 5D700BE5
+P 1150 3750
+F 0 "#PWR0110" H 1150 3500 50  0001 C CNN
+F 1 "GND" H 1155 3577 50  0000 C CNN
+F 2 "" H 1150 3750 50  0001 C CNN
+F 3 "" H 1150 3750 50  0001 C CNN
+	1    1150 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1150 3600 1150 3650
+Wire Wire Line
+	1400 3600 1400 3650
+Wire Wire Line
+	1400 3650 1150 3650
+Connection ~ 1150 3650
+Wire Wire Line
+	1150 3650 1150 3750
+Wire Wire Line
+	1650 3600 1650 3650
+Wire Wire Line
+	1650 3650 1400 3650
+Connection ~ 1400 3650
+Wire Wire Line
+	1900 3600 1900 3650
+Wire Wire Line
+	1900 3650 1650 3650
+Connection ~ 1650 3650
 $EndSCHEMATC
