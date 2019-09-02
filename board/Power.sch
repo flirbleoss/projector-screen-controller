@@ -8,9 +8,9 @@ Sheet 4 4
 Title "Projector Screen Controller"
 Date "2019-08-31"
 Rev "0.1"
-Comp "Chris Luke"
+Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
-Comment2 ""
+Comment2 "Copyright (c) 2019 Chris Luke; licensed under SHL-2.0"
 Comment3 ""
 Comment4 "Power supplies"
 $EndDescr

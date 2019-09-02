@@ -2,10 +2,10 @@
 
   (general
     (thickness 1.6)
-    (drawings 73)
+    (drawings 74)
     (tracks 335)
     (zones 0)
-    (modules 48)
+    (modules 49)
     (nets 54)
   )
 
@@ -13,8 +13,9 @@
   (title_block
     (title "Projector Screen Controller")
     (rev 0.1)
-    (company "Chris Luke")
+    (company "Flirble Open Source")
     (comment 1 https://github.com/flirbleoss/projector-screen-controller)
+    (comment 2 "Copyright (c) 2019 Chris Luke; licensed under SHL-2.0")
   )
 
   (layers
@@ -230,6 +231,29 @@
     (add_net +12V)
     (add_net +5V)
     (add_net GND)
+  )
+
+  (module Symbols:Symbol_HighVoltage_Type2_CopperTop_VerySmall (layer F.Cu) (tedit 0) (tstamp 5D6C2954)
+    (at 160.7185 115.2525)
+    (descr "Symbol, High Voltage, Type 2, Copper Top, Very Small,")
+    (tags "Symbol, High Voltage, Type 2, Copper Top, Very Small,")
+    (fp_text reference REF** (at -0.127 -5.715) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value Symbol_HighVoltage_Type2_CopperTop_VerySmall (at -0.381 4.572) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_line (start -0.49784 2.19964) (end 0.70104 -0.89916) (layer F.Cu) (width 0.381))
+    (fp_line (start 0.70104 -0.89916) (end 0.1016 -0.50038) (layer F.Cu) (width 0.381))
+    (fp_line (start -0.89916 0.20066) (end 0.40132 -2.60096) (layer F.Cu) (width 0.381))
+    (fp_line (start -0.49784 2.19964) (end 0.1016 1.50114) (layer F.Cu) (width 0.381))
+    (fp_line (start -0.09906 -2.79908) (end -0.89916 0.20066) (layer F.Cu) (width 0.381))
+    (fp_line (start -0.89916 0.20066) (end 0.29972 -0.59944) (layer F.Cu) (width 0.381))
+    (fp_line (start 0.29972 -0.59944) (end -0.49784 2.19964) (layer F.Cu) (width 0.381))
+    (fp_line (start -0.49784 2.19964) (end -0.59944 1.30048) (layer F.Cu) (width 0.381))
+    (fp_line (start 0 -4.191) (end 4.699 2.794) (layer F.Cu) (width 0.381))
+    (fp_line (start 4.699 2.794) (end -4.699 2.794) (layer F.Cu) (width 0.381))
+    (fp_line (start -4.699 2.794) (end 0 -4.191) (layer F.Cu) (width 0.381))
   )
 
   (module Mounting_Holes:MountingHole_3.7mm_Pad_Via (layer F.Cu) (tedit 56DDBE44) (tstamp 5D6C04C1)
@@ -580,7 +604,7 @@
   )
 
   (module Symbols:OSHW-Logo_7.5x8mm_SilkScreen (layer F.Cu) (tedit 0) (tstamp 5D6BAC2D)
-    (at 126.365 107.95)
+    (at 117.729 109.855)
     (descr "Open Source Hardware Logo")
     (tags "Logo OSHW")
     (attr virtual)
@@ -932,7 +956,7 @@
   )
 
   (module Symbols:Symbol_KiCAD-Logo_CopperAndSilkScreenTop (layer F.Cu) (tedit 0) (tstamp 5D6BAC1E)
-    (at 126.365 116.205)
+    (at 114.3 116.205)
     (descr "Symbol, KiCAD-Logo, Silk & Copper Top,")
     (tags "Symbol, KiCAD-Logo, Silk & Copper Top,")
     (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
@@ -3193,6 +3217,9 @@
     )
   )
 
+  (gr_text "Copyright (c) Chris Luke\nLicensed under SHL-2.0" (at 149.606 148.7805) (layer F.SilkS) (tstamp 5D6C6DCB)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
   (dimension 106.045 (width 0.12) (layer F.SilkS)
     (gr_text "106.045 mm" (at 62.23 98.1075 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
