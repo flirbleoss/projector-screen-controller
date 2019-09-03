@@ -29,19 +29,25 @@ volatile struct uart uarts[2];
 #define UARTP(uart) (((uart) == UART_1) ? &uarts[UART_1] : &uarts[UART_2])
 
 // Ring buffer handling
+// tx_lo is where we start reading the buffer
+// tx_hi is where we start adding to the buffer
+#define _RB_SIZE_tx (UART_TX_BUF)
+#define _RB_SIZE_rx (UART_RX_BUF)
 #define _RB_MAX_tx (UART_TX_BUF-1)
 #define _RB_MAX_rx (UART_RX_BUF-1)
 #define RB_LO(U, D) (U-> D ## _lo)
 #define RB_HI(U, D) (U-> D ## _hi)
+#define RB_SIZE(D) (_RB_SIZE_ ## D)
 #define RB_MAX(D) (_RB_MAX_ ## D)
 #define RB_FULL(U, D) (RB_LO(U, D) == RB_MAX(D) ? RB_HI(U, D) == 0 : \
-        RB_HI(U, D) == (RB_LO(U, D)+1))
+        RB_LO(U, D) == (RB_HI(U, D)+1))
 #define RB_EMPTY(U, D) (RB_LO(U, D) == RB_HI(U, D))
 #define RB_COUNT(U, D) ( \
     RB_HI(U, D) < RB_LO(U, D) \
-    ? (RB_MAX(D) - RB_LO(U, D)) + RB_HI(U, D) \
+    ? (RB_SIZE(D) - RB_LO(U, D)) + RB_HI(U, D) \
     : RB_HI(U, D) - RB_LO(U, D) \
 )
+
 // UART handling
 
 void uart_init(void) {
@@ -85,7 +91,7 @@ unsigned char uart_recvch(char uart, char block) {
         }
     } else if (RB_EMPTY(u, rx)) {
         // Nothing available
-        return 0;
+        return ~0;
     }
 
     unsigned char ch = u->rx[u->rx_lo];
@@ -104,7 +110,7 @@ char uart_recvempty(char uart) {
 char uart_recvcount(char uart) {
     volatile struct uart *u = UARTP(uart);
 
-    return (char)RB_COUNT(u, rx);
+    return (char) RB_COUNT(u, rx);
 }
 
 // Interrupt-driven functions
