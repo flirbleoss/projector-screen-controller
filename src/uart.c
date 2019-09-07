@@ -35,8 +35,8 @@ volatile struct uart uarts[2];
 #define _RB_SIZE_rx (UART_RX_BUF)
 #define _RB_MAX_tx (UART_TX_BUF-1)
 #define _RB_MAX_rx (UART_RX_BUF-1)
-#define RB_LO(U, D) (U-> D ## _lo)
-#define RB_HI(U, D) (U-> D ## _hi)
+#define RB_LO(U, D) ((U)->D ## _lo)
+#define RB_HI(U, D) ((U)->D ## _hi)
 #define RB_SIZE(D) (_RB_SIZE_ ## D)
 #define RB_MAX(D) (_RB_MAX_ ## D)
 #define RB_FULL(U, D) (RB_LO(U, D) == RB_MAX(D) ? RB_HI(U, D) == 0 : \
@@ -47,6 +47,12 @@ volatile struct uart uarts[2];
     ? (RB_SIZE(D) - RB_LO(U, D)) + RB_HI(U, D) \
     : RB_HI(U, D) - RB_LO(U, D) \
 )
+
+#define RB_PUT(U, D, C) do { \
+    (U)->D[RB_HI(U, D)] = (C); \
+    RB_HI(U, D)++; \
+    if (RB_HI(U, D) >= RB_MAX(D)) RB_HI(U, D) = 0; \
+    } while(0)
 
 // UART handling
 
@@ -65,9 +71,9 @@ void uart_sendch(char uart, unsigned char ch) {
         __delay_ms(100);
     }
 
-    u->tx[u->tx_hi] = ch;
-    u->tx_hi++;
-    if (u->tx_hi >= UART_TX_BUF) u->tx_hi = 0;
+    di();
+    RB_PUT(u, tx, ch);
+    ei();
 
     // Tell UART to interrupt when we can send
     if (uart == UART_1) TX1IE = 1;
@@ -94,17 +100,19 @@ unsigned char uart_recvch(char uart, char block) {
         return ~0;
     }
 
-    unsigned char ch = u->rx[u->rx_lo];
+    di();
+    unsigned char c = u->rx[u->rx_lo];
     u->rx_lo++;
     if (u->rx_lo >= UART_RX_BUF) u->rx_lo = 0;
+    ei();
 
-    return ch;
+    return c;
 }
 
 char uart_recvempty(char uart) {
     volatile struct uart *u = UARTP(uart);
 
-    return ((char) RB_EMPTY(u, rx));
+    return (char) RB_EMPTY(u, rx);
 }
 
 char uart_recvcount(char uart) {
@@ -120,10 +128,11 @@ void uart_int_send(char uart) {
 
     if (!RB_EMPTY(u, tx)) {
         unsigned char c = u->tx[u->tx_lo];
-        if (uart == UART_1) TX1REG = c;
-        else TX2REG = c;
         u->tx_lo++;
         if (u->tx_lo >= UART_TX_BUF) u->tx_lo = 0;
+
+        if (uart == UART_1) TX1REG = c;
+        else TX2REG = c;
     }
 
     if (!RB_EMPTY(u, tx)) {
@@ -137,16 +146,14 @@ void uart_int_recv(char uart) {
     volatile struct uart *u = UARTP(uart);
 
     while ((uart == UART_1 && RC1IF) || (uart == UART_2 && RC2IF)) {
-        unsigned char byte;
+        unsigned char c;
 
-        if (uart == UART_1) byte = RC1REG;
-        else byte = RC2REG;
+        if (uart == UART_1) c = RC1REG;
+        else c = RC2REG;
 
         // Add byte to the buffer; drop if buffer full
         if (!RB_FULL(u, rx)) {
-            u->rx[u->rx_hi] = byte;
-            u->rx_hi++;
-            if (u->rx_hi > UART_RX_BUF) u->rx_hi = 0;
+            RB_PUT(u, rx, c);
         }
     }
 }

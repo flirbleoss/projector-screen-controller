@@ -13,6 +13,9 @@
 // Incremented by a timer. See TMR1_INTERVAL.
 volatile uint8_t tick;
 
+// Button de-bounce
+volatile bit b_1up, b_1dn, b_2up, b_2dn;
+
 /* Initialize the hardware peripherals.
  * 
  * Clock source and speed is set by CONFIG bits in pic_config.c
@@ -34,11 +37,19 @@ static void hardware_init(void) {
     PMD3 = 0xff;        // PWM, CCP
     PMD5 = 0xff;        // CLC
 
+    // Disable ADC inputs; these are enabled by default
+    ANSELA = 0;
+    ANSELB = 0;
+    ANSELC = 0;
+
     // Pin re-mapping
+    SSP1SSPPS = 0x00;   // Move SS1 away from RC6
     RC4PPS = 0x0f;      // RC4 -> UART 1 TX
     RC5PPS = 0x11;      // RC5 -> UART 2 TX
     RX1DTPPS = 0x16;    // RC6 -> UART 1 RX
-    RX2DTPPS = 0x17;    // RC7 ->UART 2 RX
+    RX2DTPPS = 0x17;    // RC7 -> UART 2 RX
+    TX1CKPPS = 0x14;    // Not used, but aligns with UART 1 RX
+    TX2CKPPS = 0x15;    // Not used, but aligns with UART 2 RX
 
     // Disable any further more port re-mapping
     PPSLOCK = 0x55;     // Unlock the register
@@ -50,7 +61,7 @@ static void hardware_init(void) {
     WPUC = 0x0f;        // RC0,1,2,3 have weak pull-ups
     TRISA = 0xfb;       // RA2 is output
     TRISB = 0x00;       // Port B is all outputs
-    TRISC = 0xcf;       // Port C is all inputs (UART will manage TX pins)
+    TRISC = 0xcf;       // Port C is all inputs except UART TX pins
 
     // Setup interrupt-on-change for RC0,1,2,3
     IOCCP = 0x0f;       // IOC on rising edge of RC0,1,2,3
@@ -62,6 +73,7 @@ static void hardware_init(void) {
     // Setup UART1
     SP1BRG = UART_SPBRG;
     TX1STAbits.BRGH = UART_BRGH;
+    BAUD1CONbits.BRG16 = UART_BRG16;
     TX1STAbits.TXEN = 1;    // Enable transmitter
     TX1STAbits.SYNC = 0;    // Asynchronous
     RC1STAbits.CREN = 1;    // Enable receiver
@@ -71,6 +83,7 @@ static void hardware_init(void) {
     // Setup UART2
     SP2BRG = UART_SPBRG;
     TX2STAbits.BRGH = UART_BRGH;
+    BAUD2CONbits.BRG16 = UART_BRG16;
     TX2STAbits.TXEN = 1;    // Enable transmitter
     TX2STAbits.SYNC = 0;    // Asynchronous
     RC2STAbits.CREN = 1;    // Enable receiver
@@ -108,8 +121,12 @@ void main(void) {
     hardware_init();
     uart_init();
 
-    uart_send(UART_1, (char *) "#PJSC UART1\n");
-    uart_send(UART_2, (char *) "#PJSC UART2\n");
+    uart_send(UART_1, (char *) "#PJSC " VERSION " UART1\r\n");
+    uart_send(UART_2, (char *) "#PJSC " VERSION " UART2\r\n");
+#ifdef __DEBUG
+    uart_send(UART_1, (char *) "#DEBUG\r\n");
+    uart_send(UART_2, (char *) "#DEBUG\r\n");
+#endif
 
     while (1) {
         // Iterate on controller operations
@@ -119,6 +136,26 @@ void main(void) {
         // Let the puppy know we're alive
         CLRWDT();
 #endif /* USE_WATCHDOG */
+
+#ifdef TEST1
+        // Test 1: Alternating pattern on the LEDs/Relays
+        LATB = 0xaa;
+        __delay_ms(100);
+        LATB = 0x55;
+        __delay_ms(100);
+#endif /* TEST1 */
+
+#ifdef TEST2
+        // Test 2: Echo back characters received on UART1
+        while (!uart_recvempty(UART_1)) {
+            unsigned char ch = uart_recvch(UART_1, 0);
+            uart_sendch(UART_1, ch);
+        }
+        while (!uart_recvempty(UART_2)) {
+            unsigned char ch = uart_recvch(UART_2, 0);
+            uart_sendch(UART_2, ch);
+        }
+#endif /* TEST 2 */
     }
 }
 
@@ -146,6 +183,11 @@ static void interrupt interrupt_handler(void) {
 
         // Do something with it
         // check_buttons();
+        // Check which buttons are still pressed
+        b_1up = RC0;
+        b_1dn = RC1;
+        b_2up = RC2;
+        b_2dn = RC3;
     }
 
     // Input line changed?
@@ -155,8 +197,11 @@ static void interrupt interrupt_handler(void) {
             // Reset timer0. This is to de-bounce the press
             RESET_TMR0();
 
-            // Reset the runtime counter
-            tick = 0;
+            // Record which buttons are currently pressed
+            b_1up = RC0;  // TODO Can we see which input lines triggered IRQ?
+            b_1dn = RC1;  // IOCCFbits.IOCCF0 etc
+            b_2up = RC2;
+            b_2dn = RC3;
 
             // Reset our trigger
             // TODO section 17.3.1 (page 211) talks about using xor/and to avoid
@@ -176,6 +221,7 @@ static void interrupt interrupt_handler(void) {
 
     // UART1 can transmit?
     if (TX1IE && TX1IF) {
+        // Disable further TX-ready interrupts; will re-enable later if needed
         TX1IE = 0;
         TX1IF = 0;
 
@@ -190,6 +236,7 @@ static void interrupt interrupt_handler(void) {
 
     // UART2 can transmit?
     if (TX2IE && TX2IF) {
+        // Disable further TX-ready interrupts; will re-enable later if needed
         TX2IE = 0;
         TX2IF = 0;
 

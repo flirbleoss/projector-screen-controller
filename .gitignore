@@ -33,6 +33,7 @@
 *-bak
 *.bck
 _saved*.sch
+_autosave-*.sch
 _autosave-*.kicad_pcb
 
 # Vi
@@ -43,6 +44,7 @@ board/projector-screen-controller.xml
 board/projector-screen-controller.csv
 board/projector-screen-controller.dsn
 board/projector-screen-controller.net
+board/projector-screen-controller.cmp
 board/~$projector-screen-controller.xlsx
 board/projector-screen-controller.xlsx
 board/gerbers/gerber.zip

@@ -22,19 +22,22 @@
 #pragma config FEXTOSC = 0b010  // Ext osc is >4MHz crystal
 
 // REGISTER 5-2
-//#pragma config DEBUG = OFF      // Background debugger
 #pragma config STVREN = ON      // Stack over/underflow causes reset
 #pragma config PPS1WAY = ON     // PPSLOCK set once (ON)/set many (OFF)
 #pragma config BORV = 1         // Brown out reset voltage (low trip point)
 #pragma config BOREN = 0b11     // Brown-out detect
 #pragma config LPBOREN = OFF    // Low-power brownout
-#pragma config PWRTE = ON       // Power up timer enable
 #pragma config MCLRE = OFF      // !MCLR disable (ignored if LVP=ON)
+#ifdef __DEBUG
+#pragma config PWRTE = OFF      // Power up timer disabled for debugging
+#else
+#pragma config PWRTE = ON       // Power up timer enable
+#endif
 
 #ifdef USE_WATCHDOG
 // REGISTER 5-3
 // TODO not tested
-#pragma config WDRCCS = 0b001   // 31KHz internal oscillator
+#pragma config WDTCCS = 0b001   // 31KHz internal oscillator
 #pragma config WDTCWS = 0b111   // 100% window
 #pragma config WDTE = 0b10      // Watchdog timer enable (when not in sleep)
 #pragma config WDTCPS = 0b10000 // ~64s timeout (TODO: should be tuned lower)

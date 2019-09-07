@@ -14,8 +14,16 @@
 extern "C" {
 #endif
 
+#define VERSION "0.1"
+
+#ifndef __DEBUG
 // Whether we want to use the watchdog timer
-//#define USE_WATCHDOG
+#define USE_WATCHDOG
+#endif
+
+// Basic test code; not for production use
+//#define TEST1   // Alternating LED/Relay pattern
+#define TEST2   // UART1/2 echoback
 
 #define _XTAL_FREQ (32000000)   // 32MHz
 
@@ -63,7 +71,7 @@ extern "C" {
 
 // UART handling settings
 #define UART_TX_BUF 16  // Send buffer size, per-UART
-#define UART_RX_BUF 4   // Receive buffer size, per-UART
+#define UART_RX_BUF 8   // Receive buffer size, per-UART
 
 #ifdef	__cplusplus
 }

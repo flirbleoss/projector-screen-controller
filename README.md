@@ -63,5 +63,10 @@ suppression.
 ## Actions
 
 * Verify spacing of connectors to edge wrt the case lid.
-* Validate board and hole geometry one more time.
+  * Power-side connectors probably need to move to the left by ~1mm
 * Write the firmware.
+* Investigate the need to split the GND plane under 12v components;
+  * Will direct any return noise away from the 5v section.
+  * May not be necessary but feels like better design / cheap insurance.
+* The TVS diode was larger than anticipated, make room.
+* The xtal load caps are larger (with wider pin spacing) than anticipated; find smaller.
