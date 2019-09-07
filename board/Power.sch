@@ -91,8 +91,6 @@ F 3 "~" H 4300 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 3250 4300 3250
-Wire Wire Line
 	4050 3450 4150 3450
 $Comp
 L Device:CP C12
@@ -105,10 +103,6 @@ F 3 "~" H 4900 3400 50  0001 C CNN
 	1    4900 3400
 	1    0    0    -1  
 $EndComp
-Connection ~ 4300 3250
-Connection ~ 4900 3250
-Wire Wire Line
-	4300 3250 4900 3250
 Text HLabel 1700 3250 0    50   Input ~ 0
 LINE
 Text HLabel 1700 3450 0    50   Input ~ 0
@@ -205,11 +199,8 @@ Wire Wire Line
 	5650 3550 5650 3800
 Wire Wire Line
 	5650 3250 5650 2500
-Connection ~ 5650 3250
 Wire Wire Line
 	5650 2500 6100 2500
-Wire Wire Line
-	4900 3250 5650 3250
 $Comp
 L Device:LED D6
 U 1 1 5D70BFF3
@@ -231,7 +222,7 @@ L Device:R R2
 U 1 1 5D70D964
 P 6100 2950
 F 0 "R2" H 6170 2996 50  0000 L CNN
-F 1 "500R" H 6170 2905 50  0000 L CNN
+F 1 "1K" H 6170 2905 50  0000 L CNN
 F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6030 2950 50  0001 C CNN
 F 3 "~" H 6100 2950 50  0001 C CNN
 	1    6100 2950
@@ -265,7 +256,7 @@ L Device:R R3
 U 1 1 5D710E5B
 P 9150 2950
 F 0 "R3" H 9220 2996 50  0000 L CNN
-F 1 "150R" H 9220 2905 50  0000 L CNN
+F 1 "330R" H 9220 2905 50  0000 L CNN
 F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9080 2950 50  0001 C CNN
 F 3 "~" H 9150 2950 50  0001 C CNN
 	1    9150 2950
@@ -293,4 +284,21 @@ Wire Wire Line
 	4300 3800 4900 3800
 Wire Wire Line
 	4150 3450 4150 3800
+Wire Wire Line
+	4050 3250 4150 3250
+Wire Wire Line
+	4150 3250 4150 2500
+Wire Wire Line
+	4150 2500 4300 2500
+Connection ~ 5650 2500
+Wire Wire Line
+	4900 3250 4900 2500
+Connection ~ 4900 2500
+Wire Wire Line
+	4900 2500 5650 2500
+Wire Wire Line
+	4300 3250 4300 2500
+Connection ~ 4300 2500
+Wire Wire Line
+	4300 2500 4900 2500
 $EndSCHEMATC
