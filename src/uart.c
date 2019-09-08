@@ -20,7 +20,6 @@ struct uart {
     volatile unsigned char rx[UART_RX_BUF];
     volatile char rx_lo;
     volatile char rx_hi;
-
 };
 
 volatile struct uart uarts[2];
@@ -51,8 +50,8 @@ volatile struct uart uarts[2];
 #define RB_PUT(U, D, C) do { \
     (U)->D[RB_HI(U, D)] = (C); \
     RB_HI(U, D)++; \
-    if (RB_HI(U, D) >= RB_MAX(D)) RB_HI(U, D) = 0; \
-    } while(0)
+    if (RB_HI(U, D) >= RB_SIZE(D)) RB_HI(U, D) = 0; \
+} while(0)
 
 // UART handling
 
@@ -90,7 +89,7 @@ void uart_send(char uart, unsigned char *ch) {
 unsigned char uart_recvch(char uart, char block) {
     volatile struct uart *u = UARTP(uart);
 
-    if (block) {
+    if (block != UART_NONBLOCK) {
         while (RB_EMPTY(u, rx)) {
             // Wait
             __delay_ms(100);
@@ -115,11 +114,13 @@ char uart_recvempty(char uart) {
     return (char) RB_EMPTY(u, rx);
 }
 
+#ifdef WANT_UART_RECVCOUNT
 char uart_recvcount(char uart) {
     volatile struct uart *u = UARTP(uart);
 
     return (char) RB_COUNT(u, rx);
 }
+#endif /* WANT_UART_RECVCOUNT */
 
 // Interrupt-driven functions
 

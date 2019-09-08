@@ -10,10 +10,6 @@
 
 #include <stdint.h>
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
 #define VERSION "0.1"
 
 #ifndef __DEBUG
@@ -23,16 +19,19 @@ extern "C" {
 
 // Basic test code; not for production use
 //#define TEST1   // Alternating LED/Relay pattern
-#define TEST2   // UART1/2 echoback
+//#define TEST2   // UART1/2 echoback
+//#define TEST3   // Timer rollover
 
-#define _XTAL_FREQ (32000000)   // 32MHz
+#define _XTAL_FREQ      (32000000)  // 32MHz
 
 // Values for Timer1
-#define SET_TMR1_CS (0b11)      // LFINTOSC = 31KHz
-#define SET_TMR1_SYNC (0b1)     // Use clock directly (no sync)
-#define SET_TMR1_PS (0b00)      // 1:1 prescaler
-#define TMR1_COUNT_MAX (62000)  // Interrupt every 2 seconds
-#define TMR1_INTERVAL (TMR1_COUNT_MAX/31000)
+#define LFINTOSC_FREQ   (31000)
+#define SET_TMR1_CS     (0b0100)    // LFINTOSC = 31KHz
+#define SET_TMR1_SYNC    (1)        // Use clock directly (no sync)
+#define SET_TMR1_PS     (0b00)      // 1:1 prescaler
+#define TMR1_COUNT_MAX  (62000)     // Interrupt every 2 seconds
+#define TMR1_INTERVAL   (TMR1_COUNT_MAX/LFINTOSC_FREQ)
+
 #define SET_TMR1_RESET_LSB ((uint8_t)((65536-TMR1_COUNT_MAX) & 0x00ff))
 #define SET_TMR1_RESET_MSB ((uint8_t)((65536-TMR1_COUNT_MAX) >> 8))
 
@@ -73,8 +72,7 @@ extern "C" {
 #define UART_TX_BUF 16  // Send buffer size, per-UART
 #define UART_RX_BUF 8   // Receive buffer size, per-UART
 
-#ifdef	__cplusplus
-}
-#endif
+// Optional functions
+//#define WANT_UART_RECVCOUNT
 
 #endif	/* _CONFIG_H */

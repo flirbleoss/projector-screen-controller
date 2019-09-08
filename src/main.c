@@ -10,11 +10,13 @@
 #include <stdint.h>
 #include "pjs.h"
 
-// Incremented by a timer. See TMR1_INTERVAL.
-volatile uint8_t tick;
+#ifdef TEST3
+// Tick flag
+volatile __bit ticked;
+#endif
 
 // Button de-bounce
-volatile bit b_1up, b_1dn, b_2up, b_2dn;
+volatile __bit b_1up, b_1dn, b_2up, b_2dn;
 
 /* Initialize the hardware peripherals.
  * 
@@ -107,9 +109,6 @@ static void hardware_init(void) {
     // Let the interrupts loose
     PEIE = 1;
     GIE = 1;
-
-    // Reset our flags/values
-    tick = 0;
 }
 
 
@@ -120,17 +119,27 @@ void main(void) {
     // Initialize the peripherals
     hardware_init();
     uart_init();
+    relay_init();
+    control_init();
 
-    uart_send(UART_1, (char *) "#PJSC " VERSION " UART1\r\n");
-    uart_send(UART_2, (char *) "#PJSC " VERSION " UART2\r\n");
+    uart_send(UART_1, (unsigned char *) "#PJSC " VERSION " UART1\r\n");
+    uart_send(UART_2, (unsigned char *) "#PJSC " VERSION " UART2\r\n");
 #ifdef __DEBUG
-    uart_send(UART_1, (char *) "#DEBUG\r\n");
-    uart_send(UART_2, (char *) "#DEBUG\r\n");
+    uart_send(UART_1, (unsigned char *) "#DEBUG\r\n");
+    uart_send(UART_2, (unsigned char *) "#DEBUG\r\n");
+#endif
+
+    relay_report(UART_1, '#');
+    relay_report(UART_2, '#');
+
+#ifdef TEST3
+    unsigned char t3 = 0;
 #endif
 
     while (1) {
         // Iterate on controller operations
-        // do_controller();
+        command_check();
+        button_check();
 
 #ifdef USE_WATCHDOG
         // Let the puppy know we're alive
@@ -148,14 +157,24 @@ void main(void) {
 #ifdef TEST2
         // Test 2: Echo back characters received on UART1
         while (!uart_recvempty(UART_1)) {
-            unsigned char ch = uart_recvch(UART_1, 0);
+            unsigned char ch = uart_recvch(UART_1, UART_NONBLOCK);
             uart_sendch(UART_1, ch);
         }
         while (!uart_recvempty(UART_2)) {
-            unsigned char ch = uart_recvch(UART_2, 0);
+            unsigned char ch = uart_recvch(UART_2, UART_NONBLOCK);
             uart_sendch(UART_2, ch);
         }
 #endif /* TEST 2 */
+
+#ifdef TEST3
+        // Test 3: Timer timing
+        if (ticked) {
+            t3++;
+            LATB = t3 << 4;
+
+            ticked = 0;
+        }
+#endif /* TEST3 */
     }
 }
 
@@ -164,16 +183,18 @@ void main(void) {
 // occurs, here we have to work out which peripheral triggered the
 // event and act accordingly.
 
-static void interrupt interrupt_handler(void) {
+static void __interrupt() interrupt_handler(void) {
     // Timer1 expired? This is our tick
     if (TMR1IE && TMR1IF) {
         // Reset the timer
         RESET_TMR1();
 
-        // Tock the tick
-        ++tick;
+#ifdef TEST3
+        ticked = 1;
+#endif
 
-        // TODO check the tick, see if we need to do something
+        // Relays, when enabled, run for a period of time
+        relay_tick();
     }
 
     // Timer0 expired? This is a button de-bounce delay
