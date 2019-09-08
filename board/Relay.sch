@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 4
 Title "Projector Screen Controller"
-Date "2019-09-02"
+Date "2019-09-07"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -33,17 +33,6 @@ Text HLabel 1050 2700 0    50   Input ~ 0
 D2_UP_TTL
 Text HLabel 1050 2800 0    50   Input ~ 0
 D2_DN_TTL
-$Comp
-L power:GND #PWR0106
-U 1 1 5D7017FB
-P 3150 3750
-F 0 "#PWR0106" H 3150 3500 50  0001 C CNN
-F 1 "GND" H 3155 3577 50  0000 C CNN
-F 2 "" H 3150 3750 50  0001 C CNN
-F 3 "" H 3150 3750 50  0001 C CNN
-	1    3150 3750
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+12V #PWR0107
 U 1 1 5D701C71
@@ -504,4 +493,19 @@ Wire Wire Line
 Connection ~ 3150 3550
 Wire Wire Line
 	3150 3550 3150 3750
+$Comp
+L power:GNDPWR #PWR012
+U 1 1 5D7B0E70
+P 3150 3750
+F 0 "#PWR012" H 3150 3550 50  0001 C CNN
+F 1 "GNDPWR" H 3154 3596 50  0000 C CNN
+F 2 "" H 3150 3700 50  0001 C CNN
+F 3 "" H 3150 3700 50  0001 C CNN
+	1    3150 3750
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6550 1750
+NoConn ~ 6550 2700
+NoConn ~ 6550 3700
+NoConn ~ 6550 4750
 $EndSCHEMATC

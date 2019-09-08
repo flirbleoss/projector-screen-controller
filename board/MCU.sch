@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 4
 Title "Projector Screen Controller"
-Date "2019-09-02"
+Date "2019-09-07"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -496,4 +496,6 @@ Wire Wire Line
 	2300 5400 2300 5450
 Wire Wire Line
 	2300 5750 2300 5950
+Text Notes 2300 2000 1    50   ~ 0
+Optional programming\nheader components
 $EndSCHEMATC

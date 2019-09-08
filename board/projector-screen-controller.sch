@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Projector Screen Controller"
-Date "2019-09-02"
+Date "2019-09-07"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -55,8 +55,9 @@ F2 "LINE" I L 3750 5200 50
 F3 "NEUT" I L 3750 5400 50 
 F4 "+12V" O R 5450 5200 50 
 F5 "+5V" O R 5450 5300 50 
-F6 "GND" B R 5450 5750 50 
+F6 "GND" B R 5450 5650 50 
 F7 "EARTH" U L 3750 5300 50 
+F8 "GNDPWR" B R 5450 5750 50 
 $EndSheet
 $Comp
 L power:NEUT #PWR0101
@@ -309,18 +310,14 @@ Connection ~ 2400 5400
 $Comp
 L power:GND #PWR0104
 U 1 1 5D6F4A37
-P 5750 6000
-F 0 "#PWR0104" H 5750 5750 50  0001 C CNN
-F 1 "GND" H 5755 5827 50  0000 C CNN
-F 2 "" H 5750 6000 50  0001 C CNN
-F 3 "" H 5750 6000 50  0001 C CNN
-	1    5750 6000
+P 6100 6050
+F 0 "#PWR0104" H 6100 5800 50  0001 C CNN
+F 1 "GND" H 6105 5877 50  0000 C CNN
+F 2 "" H 6100 6050 50  0001 C CNN
+F 3 "" H 6100 6050 50  0001 C CNN
+	1    6100 6050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5450 5750 5750 5750
-Wire Wire Line
-	5750 5750 5750 6000
 $Comp
 L power:+12V #PWR0105
 U 1 1 5D6F727B
@@ -352,12 +349,137 @@ Wire Wire Line
 Wire Wire Line
 	6000 5300 5450 5300
 Wire Wire Line
-	2100 5200 3750 5200
+	2100 5200 2950 5200
 Wire Wire Line
-	2400 5400 3750 5400
+	2400 5400 2950 5400
 Wire Wire Line
 	2250 5300 2250 5900
 Wire Wire Line
-	2250 5300 3750 5300
+	2250 5300 3350 5300
 Connection ~ 2250 5300
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 5D799A5F
+P 8600 4550
+F 0 "H2" H 8700 4599 50  0000 L CNN
+F 1 "MountingHole_Pad" V 8450 4500 50  0000 L CNN
+F 2 "Mounting_Holes:MountingHole_3.7mm_Pad_Via" H 8600 4550 50  0001 C CNN
+F 3 "~" H 8600 4550 50  0001 C CNN
+	1    8600 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 5D79A14C
+P 8150 4550
+F 0 "H1" H 8250 4599 50  0000 L CNN
+F 1 "MountingHole_Pad" V 8000 4500 50  0000 L CNN
+F 2 "Mounting_Holes:MountingHole_3.7mm_Pad_Via" H 8150 4550 50  0001 C CNN
+F 3 "~" H 8150 4550 50  0001 C CNN
+	1    8150 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth_Protective #PWR010
+U 1 1 5D79B95E
+P 8600 4850
+F 0 "#PWR010" H 8850 4600 50  0001 C CNN
+F 1 "Earth_Protective" H 9050 4700 50  0001 C CNN
+F 2 "" H 8600 4750 50  0001 C CNN
+F 3 "~" H 8600 4750 50  0001 C CNN
+	1    8600 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8600 4650 8600 4750
+Wire Wire Line
+	8150 4650 8150 4750
+Wire Wire Line
+	8150 4750 8600 4750
+Connection ~ 8600 4750
+Wire Wire Line
+	8600 4750 8600 4850
+$Comp
+L power:GNDPWR #PWR0106
+U 1 1 5D7560D9
+P 5800 6050
+F 0 "#PWR0106" H 5800 5850 50  0001 C CNN
+F 1 "GNDPWR" H 5804 5896 50  0000 C CNN
+F 2 "" H 5800 6000 50  0001 C CNN
+F 3 "" H 5800 6000 50  0001 C CNN
+	1    5800 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 5650 6100 5650
+Wire Wire Line
+	6100 5650 6100 6050
+Wire Wire Line
+	5450 5750 5800 5750
+Wire Wire Line
+	5800 5750 5800 6050
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5D7958CA
+P 2950 5000
+F 0 "#FLG0101" H 2950 5075 50  0001 C CNN
+F 1 "PWR_FLAG" H 2950 5173 50  0000 C CNN
+F 2 "" H 2950 5000 50  0001 C CNN
+F 3 "~" H 2950 5000 50  0001 C CNN
+	1    2950 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5D796A16
+P 2950 5900
+F 0 "#FLG0102" H 2950 5975 50  0001 C CNN
+F 1 "PWR_FLAG" V 2900 5750 50  0000 C CNN
+F 2 "" H 2950 5900 50  0001 C CNN
+F 3 "~" H 2950 5900 50  0001 C CNN
+	1    2950 5900
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5D797EE8
+P 3350 5900
+F 0 "#FLG0103" H 3350 5975 50  0001 C CNN
+F 1 "PWR_FLAG" V 3300 5750 50  0000 C CNN
+F 2 "" H 3350 5900 50  0001 C CNN
+F 3 "~" H 3350 5900 50  0001 C CNN
+	1    3350 5900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2950 5000 2950 5200
+Connection ~ 2950 5200
+Wire Wire Line
+	2950 5200 3750 5200
+Wire Wire Line
+	2950 5400 2950 5900
+Connection ~ 2950 5400
+Wire Wire Line
+	2950 5400 3750 5400
+Wire Wire Line
+	3350 5300 3350 5900
+Connection ~ 3350 5300
+Wire Wire Line
+	3350 5300 3750 5300
+$Comp
+L power:PWR_FLAG #FLG0104
+U 1 1 5D79E448
+P 6350 6050
+F 0 "#FLG0104" H 6350 6125 50  0001 C CNN
+F 1 "PWR_FLAG" V 6300 5900 50  0000 C CNN
+F 2 "" H 6350 6050 50  0001 C CNN
+F 3 "~" H 6350 6050 50  0001 C CNN
+	1    6350 6050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6100 5650 6350 5650
+Wire Wire Line
+	6350 5650 6350 6050
+Connection ~ 6100 5650
 $EndSCHEMATC

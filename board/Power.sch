@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 4
 Title "Projector Screen Controller"
-Date "2019-09-02"
+Date "2019-09-07"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -57,9 +57,6 @@ Wire Wire Line
 	8550 3700 8550 3800
 Wire Wire Line
 	8550 3800 7900 3800
-Connection ~ 7900 3800
-Wire Wire Line
-	7900 3800 7250 3800
 Wire Wire Line
 	7250 3800 7250 3700
 Wire Wire Line
@@ -117,21 +114,16 @@ Wire Wire Line
 	7250 2500 7250 3250
 Connection ~ 7250 2500
 Wire Wire Line
-	7250 2500 9650 2500
+	7250 2500 8950 2500
 Text HLabel 9650 2650 2    50   Output ~ 0
 +5V
-Wire Wire Line
-	8550 2650 9150 2650
 Wire Wire Line
 	8550 2650 8550 3250
 Text HLabel 9600 3800 2    50   BiDi ~ 0
 GND
 Wire Wire Line
-	8550 3800 9150 3800
+	8550 3800 8950 3800
 Connection ~ 8550 3800
-Wire Wire Line
-	7250 3800 6100 3800
-Connection ~ 7250 3800
 $Comp
 L Device:Varistor RV?
 U 1 1 5D700221
@@ -199,76 +191,62 @@ Wire Wire Line
 	5650 3550 5650 3800
 Wire Wire Line
 	5650 3250 5650 2500
-Wire Wire Line
-	5650 2500 6100 2500
 $Comp
 L Device:LED D6
 U 1 1 5D70BFF3
-P 6100 3400
-F 0 "D6" V 6139 3283 50  0000 R CNN
-F 1 "LED" V 6048 3283 50  0000 R CNN
-F 2 "LEDs:LED_D5.0mm" H 6100 3400 50  0001 C CNN
-F 3 "~" H 6100 3400 50  0001 C CNN
-	1    6100 3400
+P 8950 3400
+F 0 "D6" V 8989 3283 50  0000 R CNN
+F 1 "LED" V 8898 3283 50  0000 R CNN
+F 2 "LEDs:LED_D5.0mm" H 8950 3400 50  0001 C CNN
+F 3 "~" H 8950 3400 50  0001 C CNN
+	1    8950 3400
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6100 3550 6100 3800
-Connection ~ 6100 3800
-Wire Wire Line
-	6100 3800 5650 3800
+	8950 3550 8950 3800
 $Comp
 L Device:R R2
 U 1 1 5D70D964
-P 6100 2950
-F 0 "R2" H 6170 2996 50  0000 L CNN
-F 1 "1K" H 6170 2905 50  0000 L CNN
-F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6030 2950 50  0001 C CNN
-F 3 "~" H 6100 2950 50  0001 C CNN
-	1    6100 2950
+P 8950 2950
+F 0 "R2" H 9020 2996 50  0000 L CNN
+F 1 "1K" H 9020 2905 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8880 2950 50  0001 C CNN
+F 3 "~" H 8950 2950 50  0001 C CNN
+	1    8950 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6100 2800 6100 2500
-Connection ~ 6100 2500
+	8950 2800 8950 2500
 Wire Wire Line
-	6100 2500 7250 2500
-Wire Wire Line
-	6100 3100 6100 3250
+	8950 3100 8950 3250
 $Comp
 L Device:LED D7
 U 1 1 5D70F3A3
-P 9150 3400
-F 0 "D7" V 9189 3283 50  0000 R CNN
-F 1 "LED" V 9098 3283 50  0000 R CNN
-F 2 "LEDs:LED_D5.0mm" H 9150 3400 50  0001 C CNN
-F 3 "~" H 9150 3400 50  0001 C CNN
-	1    9150 3400
+P 9300 3400
+F 0 "D7" V 9339 3283 50  0000 R CNN
+F 1 "LED" V 9248 3283 50  0000 R CNN
+F 2 "LEDs:LED_D5.0mm" H 9300 3400 50  0001 C CNN
+F 3 "~" H 9300 3400 50  0001 C CNN
+	1    9300 3400
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	9150 3550 9150 3800
-Connection ~ 9150 3800
-Wire Wire Line
-	9150 3800 9600 3800
+	9300 3550 9300 3800
 $Comp
 L Device:R R3
 U 1 1 5D710E5B
-P 9150 2950
-F 0 "R3" H 9220 2996 50  0000 L CNN
-F 1 "330R" H 9220 2905 50  0000 L CNN
-F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9080 2950 50  0001 C CNN
-F 3 "~" H 9150 2950 50  0001 C CNN
-	1    9150 2950
+P 9300 2950
+F 0 "R3" H 9370 2996 50  0000 L CNN
+F 1 "330R" H 9370 2905 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9230 2950 50  0001 C CNN
+F 3 "~" H 9300 2950 50  0001 C CNN
+	1    9300 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9150 3100 9150 3250
+	9300 3100 9300 3250
 Wire Wire Line
-	9150 2800 9150 2650
-Connection ~ 9150 2650
-Wire Wire Line
-	9150 2650 9650 2650
+	9300 2800 9300 2650
 Wire Wire Line
 	4150 3800 4300 3800
 Connection ~ 5650 3800
@@ -301,4 +279,68 @@ Wire Wire Line
 Connection ~ 4300 2500
 Wire Wire Line
 	4300 2500 4900 2500
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5D7501DC
+P 7600 3800
+AR Path="/5D7501DC" Ref="JP?"  Part="1" 
+AR Path="/5D68B9FF/5D7501DC" Ref="JP1"  Part="1" 
+F 0 "JP1" H 7600 3900 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 7900 3700 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_RoundedPad1.0x1.5mm" H 7600 3800 50  0001 C CNN
+F 3 "~" H 7600 3800 50  0001 C CNN
+	1    7600 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 3800 7900 3800
+Connection ~ 7900 3800
+Wire Wire Line
+	7450 3800 7250 3800
+Connection ~ 7250 3800
+Text HLabel 9600 4200 2    50   BiDi ~ 0
+GNDPWR
+Wire Wire Line
+	7250 4200 9600 4200
+Connection ~ 8950 2500
+Wire Wire Line
+	8950 2500 9650 2500
+Connection ~ 8950 3800
+Wire Wire Line
+	5650 3800 7250 3800
+Wire Wire Line
+	5650 2500 7250 2500
+Connection ~ 9300 2650
+Wire Wire Line
+	9300 2650 9650 2650
+Connection ~ 9300 3800
+Wire Wire Line
+	9300 3800 9600 3800
+Wire Wire Line
+	8550 2650 9300 2650
+Wire Wire Line
+	8950 3800 9300 3800
+Wire Wire Line
+	7250 4200 7250 3800
+$Comp
+L Jumper:SolderJumper_2_Bridged JP?
+U 1 1 5D77C086
+P 7600 4050
+AR Path="/5D77C086" Ref="JP?"  Part="1" 
+AR Path="/5D68B9FF/5D77C086" Ref="JP2"  Part="1" 
+F 0 "JP2" H 7600 4150 50  0000 C CNN
+F 1 "SolderJumper_2_Bridged" H 7900 3950 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_RoundedPad1.0x1.5mm" H 7600 4050 50  0001 C CNN
+F 3 "~" H 7600 4050 50  0001 C CNN
+	1    7600 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 4050 7450 3800
+Connection ~ 7450 3800
+Wire Wire Line
+	7750 4050 7750 3800
+Connection ~ 7750 3800
+Text Notes 7800 4050 0    50   ~ 0
+These bridges join the 12V and 5V ground\nplanes together on each side of the board
 $EndSCHEMATC
