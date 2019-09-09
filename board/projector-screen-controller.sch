@@ -92,19 +92,6 @@ F 3 "~" H 2250 5800 50  0001 C CNN
 	1    2250 5900
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector:Screw_Terminal_01x03 J2
-U 1 1 5D6FB32D
-P 1400 5300
-F 0 "J2" H 1550 5300 50  0000 C CNN
-F 1 "MSTBVA-3-G" H 1400 5050 50  0000 C CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MSTBVA-G_03x5.00mm_Vertical" H 1400 5300 50  0001 C CNN
-F 3 "~" H 1400 5300 50  0001 C CNN
-F 4 "Phoenix Connect" H 1400 5300 50  0001 C CNN "mfr"
-F 5 "1924208" H 1400 5300 50  0001 C CNN "part#"
-	1    1400 5300
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	1600 5300 2250 5300
 Wire Wire Line
@@ -125,7 +112,7 @@ U 1 1 5D704346
 P 1350 2050
 F 0 "J3" H 1268 2367 50  0000 C CNN
 F 1 "MCV-3-G" H 1268 2276 50  0000 C CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 2050 50  0001 C CNN
+F 2 "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_3-G-3.5_1x03_P3.50mm_Vertical" H 1350 2050 50  0001 C CNN
 F 3 "~" H 1350 2050 50  0001 C CNN
 	1    1350 2050
 	-1   0    0    -1  
@@ -136,7 +123,7 @@ U 1 1 5D705965
 P 1350 2600
 F 0 "J4" H 1268 2917 50  0000 C CNN
 F 1 "MCV-3-G" H 1268 2826 50  0000 C CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 2600 50  0001 C CNN
+F 2 "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_3-G-3.5_1x03_P3.50mm_Vertical" H 1350 2600 50  0001 C CNN
 F 3 "~" H 1350 2600 50  0001 C CNN
 	1    1350 2600
 	-1   0    0    -1  
@@ -147,7 +134,7 @@ U 1 1 5D7067C7
 P 1350 3150
 F 0 "J5" H 1268 3467 50  0000 C CNN
 F 1 "MCV-3-G" H 1268 3376 50  0000 C CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 3150 50  0001 C CNN
+F 2 "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_3-G-3.5_1x03_P3.50mm_Vertical" H 1350 3150 50  0001 C CNN
 F 3 "~" H 1350 3150 50  0001 C CNN
 	1    1350 3150
 	-1   0    0    -1  
@@ -200,7 +187,7 @@ U 1 1 5D70A607
 P 9850 2550
 F 0 "J6" H 9930 2542 50  0000 L CNN
 F 1 "MSTBVA-6-G" H 9930 2451 50  0000 L CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MSTBVA-G_06x5.00mm_Vertical" H 9850 2550 50  0001 C CNN
+F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_6-G_1x06_P5.00mm_Vertical" H 9850 2550 50  0001 C CNN
 F 3 "~" H 9850 2550 50  0001 C CNN
 	1    9850 2550
 	1    0    0    -1  
@@ -269,7 +256,7 @@ U 1 1 5D6D108D
 P 1350 3700
 F 0 "J7" H 1268 4017 50  0000 C CNN
 F 1 "MCV-3-G" H 1268 3926 50  0000 C CNN
-F 2 "Connectors_Phoenix:PhoenixContact_MCV-G_03x3.50mm_Vertical" H 1350 3700 50  0001 C CNN
+F 2 "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_3-G-3.5_1x03_P3.50mm_Vertical" H 1350 3700 50  0001 C CNN
 F 3 "~" H 1350 3700 50  0001 C CNN
 	1    1350 3700
 	-1   0    0    -1  
@@ -482,4 +469,17 @@ Wire Wire Line
 Wire Wire Line
 	6350 5650 6350 6050
 Connection ~ 6100 5650
+$Comp
+L Connector:Screw_Terminal_01x03 J2
+U 1 1 5D6FB32D
+P 1400 5300
+F 0 "J2" H 1550 5300 50  0000 C CNN
+F 1 "MSTBVA-3-G" H 1400 5050 50  0000 C CNN
+F 2 "Connector_Phoenix_MSTB:PhoenixContact_MSTBVA_2,5_3-G_1x03_P5.00mm_Vertical" H 1400 5300 50  0001 C CNN
+F 3 "~" H 1400 5300 50  0001 C CNN
+F 4 "Phoenix Connect" H 1400 5300 50  0001 C CNN "mfr"
+F 5 "1924208" H 1400 5300 50  0001 C CNN "part#"
+	1    1400 5300
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC
