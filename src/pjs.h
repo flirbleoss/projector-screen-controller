@@ -8,11 +8,6 @@
 #ifndef _PJS_H
 #define	_PJS_H
 
-// Command loop
-void control_init(void);
-void command_check(void);
-void button_check(void);
-
 // Relay handling
 
 typedef enum {
@@ -30,6 +25,12 @@ void relay_init(void);
 void relay_report(char uart, unsigned char cmdch);
 void relay_control(relay_channel_t channel, relay_direction_t direction);
 void relay_tick(void);
+
+// Command loop
+
+void control_init(void);
+void command_check(void);
+void button_check_channel(relay_channel_t channel, char up, char dn);
 
 // UART handling
 #define UART_1 0
@@ -50,4 +51,3 @@ void uart_int_send(char uart);
 void uart_int_recv(char uart);
 
 #endif	/* _PJS_H */
-

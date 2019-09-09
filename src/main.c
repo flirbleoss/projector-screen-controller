@@ -16,10 +16,12 @@ volatile __bit ticked;
 #endif
 
 // Button de-bounce
-volatile __bit b_1up, b_1dn, b_2up, b_2dn;
+static volatile __bit b_1upt, b_1dnt, b_2upt, b_2dnt;
+static volatile __bit b_1upi, b_1dni, b_2upi, b_2dni;
+static volatile __bit b_1up, b_1dn, b_2up, b_2dn;
 
 /* Initialize the hardware peripherals.
- * 
+ *
  * Clock source and speed is set by CONFIG bits in pic_config.c
  *
  * Timers:
@@ -67,7 +69,7 @@ static void hardware_init(void) {
 
     // Setup interrupt-on-change for RC0,1,2,3
     IOCCP = 0x0f;       // IOC on rising edge of RC0,1,2,3
-    IOCCN = 0x00;       // No IOC on any falling edge
+    IOCCN = 0x00;       // No IOC on falling edge of RC0,1,2,3 though
     IOCCF = 0;
     IOCIF = 0;
     IOCIE = 1;          // IOC on
@@ -139,7 +141,25 @@ void main(void) {
     while (1) {
         // Iterate on controller operations
         command_check();
-        button_check();
+
+        // Latch a copy of channel 1 buttons; this keeps us interrupt friendly
+        char up, dn;
+        di();
+        up = b_1up; b_1up = 0;
+        dn = b_1dn; b_1dn = 0;
+        ei();
+
+        // Check channel 1 buttons
+        button_check_channel(RELAY_CH1, up, dn);
+
+        // Latch a copy of channel 2 buttons; this keeps us interrupt friendly
+        di();
+        up = b_2up; b_2up = 0;
+        dn = b_2dn; b_2dn = 0;
+        ei();
+
+        // Check channel 2 buttons
+        button_check_channel(RELAY_CH2, up, dn);
 
 #ifdef USE_WATCHDOG
         // Let the puppy know we're alive
@@ -202,13 +222,19 @@ static void __interrupt() interrupt_handler(void) {
         // Disable the timer
         DISABLE_TMR0();
 
-        // Do something with it
-        // check_buttons();
-        // Check which buttons are still pressed
-        b_1up = RC0;
-        b_1dn = RC1;
-        b_2up = RC2;
-        b_2dn = RC3;
+        // For each input thaty was triggered, AND the current value of that
+        // input with that at the time of trigger.
+#define BT_TMR_CHECK(N, F) do { \
+        if (b_ ## N ## t) { \
+            b_ ## N = b_ ## N ## i & RC ## F; \
+            b_ ## N ## t = b_ ## N ## i = 0; \
+        } \
+} while(0)
+
+        BT_TMR_CHECK(1up, 0);
+        BT_TMR_CHECK(1dn, 1);
+        BT_TMR_CHECK(2up, 2);
+        BT_TMR_CHECK(1dn, 3);
     }
 
     // Input line changed?
@@ -218,20 +244,24 @@ static void __interrupt() interrupt_handler(void) {
             // Reset timer0. This is to de-bounce the press
             RESET_TMR0();
 
-            // Record which buttons are currently pressed
-            b_1up = RC0;  // TODO Can we see which input lines triggered IRQ?
-            b_1dn = RC1;  // IOCCFbits.IOCCF0 etc
-            b_2up = RC2;
-            b_2dn = RC3;
+            // Record the state of any button that triggered an interrupt
+            // TODO: Since we only interrupt on one edge, do we need to track
+            // the value here or can we infer from the fact we saw an interrupt?
+            // Avoids a race condition where bouncy inputs may trigger but read
+            // 0 when we read it here.
+#define BT_IOC_READ(N, F) do { \
+            if (IOCCFbits.IOCCF ## F) { \
+                b_ ## N ## t = 1; \
+                b_ ## N ## i = RC ## F; \
+                IOCCFbits.IOCCF ## F = 0; \
+            } \
+} while(0)
 
-            // Reset our trigger
-            // TODO section 17.3.1 (page 211) talks about using xor/and to avoid
-            // missing subsequent triggers
-            IOCCF = 0;
+            BT_IOC_READ(1up, 0);
+            BT_IOC_READ(1dn, 1);
+            BT_IOC_READ(2up, 2);
+            BT_IOC_READ(2dn, 3);
         }
-
-        // Reset the interrupt flag
-        IOCIF = 0;
     }
 
     // UART1 receive?

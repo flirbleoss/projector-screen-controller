@@ -12,13 +12,18 @@
 
 #define CMD_BUF_SIZ 4
 
-struct _control {
+struct ser_control {
     char uart;  // Reference to the associated UART
     char len;   // Number of accumulated characters
     char buf[CMD_BUF_SIZ];  // character buffer
 };
 
-volatile struct _control controls[] = {
+enum {
+    SER_CTRL_1,
+    SER_CTRL_2,
+};
+
+volatile struct ser_control ser_controls[] = {
     {
         .uart = UART_1,
         .len = 0,
@@ -32,11 +37,12 @@ volatile struct _control controls[] = {
 // Control handling
 
 void control_init(void) {
-
+    ser_controls[0].len = 0;
+    ser_controls[1].len = 0;
 }
 
-static void command_check_ctrl(char ctrl) {
-    volatile struct _control *c = &controls[ctrl];
+static void command_check_ser(char ctrl) {
+    volatile struct ser_control *c = &ser_controls[ctrl];
     char uart = c->uart;
 
     if (!uart_recvempty(uart)) {
@@ -109,10 +115,17 @@ static void command_check_ctrl(char ctrl) {
 }
 
 void command_check(void) {
-    command_check_ctrl(UART_1);
-    command_check_ctrl(UART_2);
+    command_check_ser(SER_CTRL_1);
+    command_check_ser(SER_CTRL_1);
 }
 
-void button_check(void) {
-    
+void button_check_channel(relay_channel_t channel, char up, char dn) {
+    relay_direction_t direction;
+
+    if (!up && !dn) return; // Test first; most common case
+    else if(up && !dn) direction = RELAY_UP;
+    else if(!up && dn) direction = RELAY_DOWN;
+    else direction = RELAY_STOP;
+
+    relay_control(channel, direction);
 }

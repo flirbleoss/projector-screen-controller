@@ -35,6 +35,7 @@
 _saved*.sch
 _autosave-*.sch
 _autosave-*.kicad_pcb
+src/MPLABXLog.xml*
 
 # Vi
 *.sw[op]
