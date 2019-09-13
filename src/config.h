@@ -12,6 +12,10 @@
 
 #define VERSION "0.1"
 
+// Which version of the board to target
+#define BOARD_REV_0_1
+//#define BOARD_REV_0_2
+
 #ifndef __DEBUG
 // Whether we want to use the watchdog timer
 #define USE_WATCHDOG

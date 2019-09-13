@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Projector Screen Controller"
-Date "2019-09-07"
+Date "2019-09-13"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -29,8 +29,8 @@ F8 "D2_UP_TTL" O R 5400 2550 50
 F9 "D2_DN_TTL" O R 5400 2650 50 
 F10 "BUT1_UP" I L 3750 3250 50 
 F11 "BUT1_DN" I L 3750 3150 50 
-F12 "BUT2_UP" I L 3750 3350 50 
-F13 "BUT2_DN" I L 3750 3450 50 
+F12 "BUT2_UP" I L 3750 3450 50 
+F13 "BUT2_DN" I L 3750 3350 50 
 $EndSheet
 $Sheet
 S 6600 2200 1700 1250
