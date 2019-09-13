@@ -68,10 +68,9 @@ static void hardware_init(void) {
     TRISC = 0xcf;       // Port C is all inputs except UART TX pins
 
     // Setup interrupt-on-change for RC0,1,2,3
-    IOCCP = 0x0f;       // IOC on rising edge of RC0,1,2,3
-    IOCCN = 0x00;       // No IOC on falling edge of RC0,1,2,3 though
+    IOCCN = 0x0f;       // IOC on falling edge of RC0,1,2,3
+    IOCCP = 0x00;
     IOCCF = 0;
-    IOCIF = 0;
     IOCIE = 1;          // IOC on
 
     // Setup UART1
@@ -103,10 +102,12 @@ static void hardware_init(void) {
     TMR1IE = 1;         // enable interrupt
     TMR1ON = 1;         // enable timer
 
-    // Setup Timer0 for de-bouncing, but don't start it
+    // Setup Timer0 for button reading and de-bouncing
     T0CON0bits.T016BIT = 1;
     T0CON1bits.T0CS = SET_TMR0_CS;
     T0CON1bits.T0CKPS = SET_TMR0_PS;
+    T0CON1bits.T0ASYNC = 1;
+    T0CON0bits.T0EN = 1;
 
     // Let the interrupts loose
     PEIE = 1;
@@ -222,11 +223,11 @@ static void __interrupt() interrupt_handler(void) {
         // Disable the timer
         DISABLE_TMR0();
 
-        // For each input thaty was triggered, AND the current value of that
+        // For each input that was triggered, AND the current value of that
         // input with that at the time of trigger.
 #define BT_TMR_CHECK(N, F) do { \
         if (b_ ## N ## t) { \
-            b_ ## N = b_ ## N ## i & RC ## F; \
+            b_ ## N = b_ ## N ## i & (!RC ## F); \
             b_ ## N ## t = b_ ## N ## i = 0; \
         } \
 } while(0)
@@ -234,7 +235,7 @@ static void __interrupt() interrupt_handler(void) {
         BT_TMR_CHECK(1up, 0);
         BT_TMR_CHECK(1dn, 1);
         BT_TMR_CHECK(2up, 2);
-        BT_TMR_CHECK(1dn, 3);
+        BT_TMR_CHECK(2dn, 3);
     }
 
     // Input line changed?
@@ -252,7 +253,7 @@ static void __interrupt() interrupt_handler(void) {
 #define BT_IOC_READ(N, F) do { \
             if (IOCCFbits.IOCCF ## F) { \
                 b_ ## N ## t = 1; \
-                b_ ## N ## i = RC ## F; \
+                b_ ## N ## i = ~RC ## F; \
                 IOCCFbits.IOCCF ## F = 0; \
             } \
 } while(0)

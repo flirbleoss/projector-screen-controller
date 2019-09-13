@@ -52,7 +52,8 @@
 #define SET_TMR0_PS (0b1111)    // 1:32768 prescaler (~4ms?)
 
 #define RESET_TMR0() do { \
-        TMR0 = 0; \
+        TMR0H = 0xff; \
+        TMR0L = 0xff; \
         TMR0IF = 0; \
         TMR0IE = 1; \
     } while (0)
