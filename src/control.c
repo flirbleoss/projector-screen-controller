@@ -47,11 +47,16 @@ static void command_check_ser(char ctrl) {
 
     if (!uart_recvempty(uart)) {
         unsigned char ch = uart_recvch(uart, UART_NONBLOCK);
+
+        if (!isprint(ch))
+            return; // skip non-printable chars quickly
+
         if (!isalnum(ch)) {
             // Command characters always reset the accumulation
             // Any non-alphanumeric is considered a command character
             c->buf[0] = ch;
             c->len = 1;
+
         } else if (c->len) {
             // Accumulate characters until a valid command is found.
             c->buf[c->len] = ch;
@@ -106,6 +111,7 @@ static void command_check_ser(char ctrl) {
                     c->len = 0;
                     relay_report(c->uart, c->buf[0]);
                 }
+
             } else {
                 // Command too long; reset
                 c->len = 0;
@@ -128,4 +134,7 @@ void button_check_channel(relay_channel_t channel, char up, char dn) {
     else direction = RELAY_STOP;
 
     relay_control(channel, direction);
+
+    relay_report(UART_1, '#');
+    relay_report(UART_2, '#');
 }
