@@ -234,8 +234,8 @@ static void __interrupt() interrupt_handler(void) {
 
         BT_TMR_CHECK(1up, 0);
         BT_TMR_CHECK(1dn, 1);
-        BT_TMR_CHECK(2up, 2);
-        BT_TMR_CHECK(2dn, 3);
+        BT_TMR_CHECK(2up, 3);
+        BT_TMR_CHECK(2dn, 2);
     }
 
     // Input line changed?
@@ -260,8 +260,8 @@ static void __interrupt() interrupt_handler(void) {
 
             BT_IOC_READ(1up, 0);
             BT_IOC_READ(1dn, 1);
-            BT_IOC_READ(2up, 2);
-            BT_IOC_READ(2dn, 3);
+            BT_IOC_READ(2up, 3);
+            BT_IOC_READ(2dn, 2);
         }
     }
 
