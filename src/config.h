@@ -21,6 +21,14 @@
 #define USE_WATCHDOG
 #endif
 
+// Work out and print the current clock situation
+#define CLOCK_DEBUG
+
+// Do we want to enable stdio functions?
+#if defined(CLOCK_DEBUG)
+#define USE_STDIO
+#endif
+
 // Basic test code; not for production use
 //#define TEST1   // Alternating LED/Relay pattern
 //#define TEST2   // UART1/2 echoback

@@ -10,6 +10,14 @@
 #include <stdint.h>
 #include "pjs.h"
 
+#ifdef USE_STDIO
+#include <stdio.h>
+#endif /* USE_STDIO */
+
+#ifdef CLOCK_DEBUG
+void clock_debug(void);
+#endif /* CLOCK_DEBUG */
+
 #ifdef TEST3
 // Tick flag
 volatile __bit ticked;
@@ -308,3 +316,66 @@ static void __interrupt() interrupt_handler(void) {
     }
 
 }
+
+#ifdef CLOCK_DEBUG
+
+void clock_debug(void) {
+    // Work out and print the current clock situation
+    char *str;
+    int val;
+
+    printf("#DBG Main osccilator: %s\r\n",
+            (OSCCON3bits.ORDY ? "Ready" : "Not Ready"));
+
+    switch (OSCCON2bits.COSC) {
+    case 0b111:
+        str = "EXTOSC";
+        break;
+    case 0b110:
+        str = "HFINTOSC (1MHz)";
+        break;
+    case 0b101:
+        str = "LFINTOSC";
+        break;
+    case 0b100:
+        str = "SOSC";
+        break;
+    case 0b010:
+        str = "EXTOSC with 4x PLL";
+        break;
+    case 0b001:
+        str = "HFINTOSC with 2x PLL (32 MHz)";
+        break;
+    case 0b011:
+    case 0b000:
+    default:
+        str = "Reserved";
+        break;
+    }
+    printf("#DBG Clock source: %s\r\n", str);
+
+    if (OSCCON2bits.CDIV <= 0b1001) {
+        val = (int)(1 << OSCCON2bits.CDIV);
+        printf("#DBG Clock divider: 1:%d\r\n", val);
+    } else {
+        printf("#DBG Clock divider: Reserved value\r\n");
+    }
+
+#define ISEN(e)  ((OSCENbits.e)   ? "Enabled," : "        " )
+#define ISRDY(r) ((OSCSTATbits.r) ? "Ready"    : "Not ready")
+
+    printf("#DBG EXTOSC:   %s %s\r\n", ISEN(EXTOEN), ISRDY(EXTOR));
+    printf("#DBG HFINTOSC: %s %s\r\n", ISEN(HFOEN),  ISRDY(HFOR));
+    printf("#DBG MFINTOSC: %s %s\r\n", ISEN(MFOEN),  ISRDY(MFOR));
+    printf("#DBG LFINTOSC: %s %s\r\n", ISEN(LFOEN),  ISRDY(LFOR));
+    printf("#DBG SOC:      %s %s\r\n", ISEN(SOSCEN), ISRDY(SOR));
+    printf("#DBG CRCOSC:   %s %s\r\n", ISEN(ADOEN),  ISRDY(ADOR));
+
+    if (OSCFRQbits.HFFRQ == 0b111) {
+        printf("#DBG HFINTOSC Frequency: Reserved\r\n");
+    } else {
+        printf("#DBG HFINTOSC Frequency: %dMHz\r\n", (1 << OSCFRQbits.HFFRQ));
+    }
+
+}
+#endif /* CLOCK_DEBUG */

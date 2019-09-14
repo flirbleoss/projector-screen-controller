@@ -122,6 +122,16 @@ char uart_recvcount(char uart) {
 }
 #endif /* WANT_UART_RECVCOUNT */
 
+// stdio
+
+#ifdef USE_STDIO
+void putch(unsigned char ch)
+{
+    // Enables stdlib stdio functions, if used
+    uart_sendch(UART_1, ch);
+}
+#endif /* USE_STDIO */
+
 // Interrupt-driven functions
 
 void uart_int_send(char uart) {
