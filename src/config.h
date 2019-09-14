@@ -22,7 +22,7 @@
 #endif
 
 // Work out and print the current clock situation
-#define CLOCK_DEBUG
+//#define CLOCK_DEBUG
 
 // Do we want to enable stdio functions?
 #if defined(CLOCK_DEBUG)
@@ -39,12 +39,12 @@
 // Values for Timer1
 #define LFINTOSC_FREQ   (31000)
 #define SET_TMR1_CS     (0b0100)    // LFINTOSC = 31KHz
-#define SET_TMR1_SYNC    (1)        // Use clock directly (no sync)
+#define SET_TMR1_SYNC   (1)         // Use clock directly (no sync)
 #define SET_TMR1_PS     (0b00)      // 1:1 prescaler
 #define TMR1_COUNT_MAX  (62000)     // Interrupt every 2 seconds
 #define TMR1_INTERVAL   (TMR1_COUNT_MAX/LFINTOSC_FREQ)
 
-#define SET_TMR1_RESET_LSB ((uint8_t)((65536-TMR1_COUNT_MAX) & 0x00ff))
+#define SET_TMR1_RESET_LSB ((uint8_t)((65536-TMR1_COUNT_MAX) & 0xff))
 #define SET_TMR1_RESET_MSB ((uint8_t)((65536-TMR1_COUNT_MAX) >> 8))
 
 #define RESET_TMR1() do { \
@@ -53,7 +53,13 @@
         TMR1IF = 0; \
     } while (0)
 
+#define ENABLE_TMR1() do { \
+        TMR1IE = 1; \
+        TMR1ON = 1; \
+    } while (0)
+
 #define DISABLE_TMR1() do { \
+        TMR1ON = 0; \
         TMR1IE = 0; \
         TMR1IF = 0; \
     } while (0)
@@ -66,14 +72,28 @@
 #define RESET_TMR0() do { \
         TMR0H = 0xff; \
         TMR0L = 0xff; \
-        TMR0IF = 0; \
-        TMR0IE = 1; \
     } while (0)
 
-#define DISABLE_TMR0() do { \
+#define PAUSE_TMR0() do { \
         TMR0IE = 0; \
         TMR0IF = 0; \
     } while (0)
+
+#define RESUME_TMR0() do { \
+        TMR0IE = 1; \
+        TMR0IF = 0; \
+    } while (0)
+
+#define DISABLE_TMR0() do { \
+        T0CON0bits.T0EN = 0; \
+        PAUSE_TMR0(); \
+    } while (0)
+
+#define ENABLE_TMR0() do { \
+        TMR0IE = 1; \
+        T0CON0bits.T0EN = 1; \
+    } while (0)
+
 
 
 // UART settings

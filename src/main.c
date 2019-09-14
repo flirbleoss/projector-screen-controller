@@ -44,6 +44,10 @@ static volatile __bit b_1up, b_1dn, b_2up, b_2dn;
  * RA4 may be an LED in future.
  */
 static void hardware_init(void) {
+    // Clock setup
+    OSCENbits.EXTOEN = 1;
+    OSCENbits.LFOEN = 1;
+
     // Disable unused modules
     PMD2 = 0xff;        // DAC, ADC, CMP, ZCD
     PMD3 = 0xff;        // PWM, CCP
@@ -105,17 +109,18 @@ static void hardware_init(void) {
     T1CLKbits.CS = SET_TMR1_CS;
     T1CONbits.CKPS = SET_TMR1_PS;
     T1CONbits.nT1SYNC = SET_TMR1_SYNC;
-    RESET_TMR1();
-    T1GCONbits.GE = 0;  // no gate
-    TMR1IE = 1;         // enable interrupt
-    TMR1ON = 1;         // enable timer
+    T1GCONbits.GE = 0;  // No gate
+    RESET_TMR1();       // Load the counter, reset the seen flag
+    ENABLE_TMR1();      // Turn it on with interrupts
 
     // Setup Timer0 for button reading and de-bouncing
-    T0CON0bits.T016BIT = 1;
+    T0CON0bits.T016BIT = 1; // 16-bit counter mode
     T0CON1bits.T0CS = SET_TMR0_CS;
     T0CON1bits.T0CKPS = SET_TMR0_PS;
-    T0CON1bits.T0ASYNC = 1;
-    T0CON0bits.T0EN = 1;
+    T0CON1bits.T0ASYNC = 1; // Don't synchronize with fOSC/4
+    RESET_TMR0();       // Load the counter
+    PAUSE_TMR0();       // Reset the flags (not seen, no interrupts)
+    ENABLE_TMR0();      // Turn it on (do not touch flags)
 
     // Let the interrupts loose
     PEIE = 1;
@@ -231,13 +236,15 @@ static void __interrupt() interrupt_handler(void) {
     // Timer0 expired? This is a button de-bounce delay
     if (TMR0IE && TMR0IF) {
         // Disable the timer
-        DISABLE_TMR0();
+        RESET_TMR0();
+        PAUSE_TMR0();
 
         // For each input that was triggered, AND the current value of that
         // input with that at the time of trigger.
 #define BT_TMR_CHECK(N, F) do { \
         if (b_ ## N ## t) { \
-            b_ ## N = b_ ## N ## i & (!RC ## F); \
+            b_ ## N = b_ ## N ## i; \
+            b_ ## N &= ~(RC ## F); \
             b_ ## N ## t = b_ ## N ## i = 0; \
         } \
 } while(0)
@@ -260,6 +267,7 @@ static void __interrupt() interrupt_handler(void) {
         if (IOCCF) {
             // Reset timer0. This is to de-bounce the press
             RESET_TMR0();
+            RESUME_TMR0();
 
             // Record the state of any button that triggered an interrupt
             // TODO: Since we only interrupt on one edge, do we need to track
@@ -269,7 +277,7 @@ static void __interrupt() interrupt_handler(void) {
 #define BT_IOC_READ(N, F) do { \
             if (IOCCFbits.IOCCF ## F) { \
                 b_ ## N ## t = 1; \
-                b_ ## N ## i = ~RC ## F; \
+                b_ ## N ## i = ~(RC ## F); \
                 IOCCFbits.IOCCF ## F = 0; \
             } \
 } while(0)

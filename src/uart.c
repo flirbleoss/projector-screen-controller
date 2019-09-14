@@ -96,7 +96,7 @@ unsigned char uart_recvch(char uart, char block) {
         }
     } else if (RB_EMPTY(u, rx)) {
         // Nothing available
-        return ~0;
+        return 0xff;
     }
 
     di();
