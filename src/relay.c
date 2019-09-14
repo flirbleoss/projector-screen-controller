@@ -9,6 +9,7 @@
 #include <xc.h>
 #include "pjs.h"
 
+static volatile char relay_report_wanted;
 static volatile unsigned char channel1_timer;
 static volatile unsigned char channel2_timer;
 
@@ -18,6 +19,9 @@ static volatile unsigned char channel2_timer;
 
 void relay_init(void) {
     channel1_timer = channel2_timer = 0;
+
+    // We want a startup readout
+    relay_report_wanted = 1;
 }
 
 void relay_report(char uart, unsigned char cmdch) {
@@ -38,6 +42,14 @@ void relay_report(char uart, unsigned char cmdch) {
 
     uart_sendch(uart, '\n');
     uart_sendch(uart, '\r');
+}
+
+void relay_check(void) {
+    if (relay_report_wanted) {
+        relay_report_wanted = 0;
+        relay_report(UART_1, '#');
+        relay_report(UART_2, '#');
+    }
 }
 
 void relay_control(relay_channel_t channel, relay_direction_t direction) {
@@ -73,6 +85,7 @@ void relay_tick(void) {
             // Stop everything on channel 1
             LATBbits.LATB4 = 0;
             LATBbits.LATB5 = 0;
+            relay_report_wanted = 1;
         }
     }
 
@@ -82,6 +95,7 @@ void relay_tick(void) {
             // Stop everything on channel 2
             LATBbits.LATB6 = 0;
             LATBbits.LATB7 = 0;
+            relay_report_wanted = 1;
         }
     }
 }

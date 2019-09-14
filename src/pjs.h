@@ -23,6 +23,7 @@ typedef enum {
 
 void relay_init(void);
 void relay_report(char uart, unsigned char cmdch);
+void relay_check(void);
 void relay_control(relay_channel_t channel, relay_direction_t direction);
 void relay_tick(void);
 

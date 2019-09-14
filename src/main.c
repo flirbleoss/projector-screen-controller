@@ -135,13 +135,14 @@ void main(void) {
 
     uart_send(UART_1, (unsigned char *) "#PJSC " VERSION " UART1\r\n");
     uart_send(UART_2, (unsigned char *) "#PJSC " VERSION " UART2\r\n");
+#ifdef CLOCK_DEBUG
+    // Work out and print the current clock situation
+    clock_debug();
+#endif /* CLOCK_DEBUG */
 #ifdef __DEBUG
     uart_send(UART_1, (unsigned char *) "#DEBUG\r\n");
     uart_send(UART_2, (unsigned char *) "#DEBUG\r\n");
 #endif
-
-    relay_report(UART_1, '#');
-    relay_report(UART_2, '#');
 
 #ifdef TEST3
     unsigned char t3 = 0;
@@ -150,6 +151,7 @@ void main(void) {
     while (1) {
         // Iterate on controller operations
         command_check();
+        relay_check();
 
         // Latch a copy of channel 1 buttons; this keeps us interrupt friendly
         char up, dn;
