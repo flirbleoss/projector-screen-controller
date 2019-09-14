@@ -45,11 +45,15 @@ static void command_check_ser(char ctrl) {
     volatile struct ser_control *c = &ser_controls[ctrl];
     char uart = c->uart;
 
-    if (!uart_recvempty(uart)) {
+    while (!uart_recvempty(uart)) {
         unsigned char ch = uart_recvch(uart, UART_NONBLOCK);
 
-        if (!isprint(ch))
-            return; // skip non-printable chars quickly
+// buggy pre-processor; the isxxxxx macros all fail to generate code, so
+// use the function variant
+#undef isprint
+        if (!isprint(ch)) {
+            continue; // skip non-printable chars quickly
+        }
 
         if (!isalnum(ch)) {
             // Command characters always reset the accumulation
