@@ -22,6 +22,11 @@ F 0 "U3" H 7900 3492 50  0000 C CNN
 F 1 "L78L05_TO92" H 7900 3401 50  0000 C CNN
 F 2 "Package_TO_SOT_THT:TO-92L" H 7900 3475 50  0001 C CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 7900 3200 50  0001 C CNN
+F 4 "ST" H 7900 3250 50  0001 C CNN "mfr"
+F 5 "L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "mpn"
+F 6 "Mouser" H 7900 3250 50  0001 C CNN "Src1"
+F 7 "511-L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/511-L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "Src1 URL"
 	1    7900 3250
 	1    0    0    -1  
 $EndComp
@@ -39,6 +44,11 @@ F 0 "C9" H 7365 3596 50  0000 L CNN
 F 1 "0.33uF" H 7365 3505 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 7288 3400 50  0001 C CNN
 F 3 "~" H 7250 3550 50  0001 C CNN
+F 4 "TDK" H 7250 3550 50  0001 C CNN "mfr"
+F 5 "FG18X7R1H334KRT00" H 7250 3550 50  0001 C CNN "mpn"
+F 6 "Mouser" H 7250 3550 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1H334KRT0" H 7250 3550 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H334KRT0" H 7250 3550 50  0001 C CNN "Src1 URL"
 	1    7250 3550
 	1    0    0    -1  
 $EndComp
@@ -50,6 +60,11 @@ F 0 "C10" H 8665 3596 50  0000 L CNN
 F 1 "0.1uF" H 8665 3505 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 8588 3400 50  0001 C CNN
 F 3 "~" H 8550 3550 50  0001 C CNN
+F 4 "TDK" H 8550 3550 50  0001 C CNN "mfr"
+F 5 "FG18X7R1H104KNT06" H 8550 3550 50  0001 C CNN "mpn"
+F 6 "Mouser" H 8550 3550 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1H104KNT6" H 8550 3550 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H104KNT6" H 8550 3550 50  0001 C CNN "Src1 URL"
 	1    8550 3550
 	1    0    0    -1  
 $EndComp
@@ -73,6 +88,11 @@ F 0 "PS1" H 3650 3675 50  0000 C CNN
 F 1 "PSK-S20C-12" H 3650 3584 50  0000 C CNN
 F 2 "Chris_Power:ACDC-Conv_CUI-PSK-S20C" H 3650 3050 50  0001 C CNN
 F 3 "https://www.cui.com/product/resource/psk-s20c.pdf" H 4050 3000 50  0001 C CNN
+F 4 "CUI" H 3650 3350 50  0001 C CNN "mfr"
+F 5 "PSK-S20C-12" H 3650 3350 50  0001 C CNN "mpn"
+F 6 "Mouser" H 3650 3350 50  0001 C CNN "Src1"
+F 7 "490-PSK-S20C-12" H 3650 3350 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/490-PSK-S20C-12" H 3650 3350 50  0001 C CNN "Src1 URL"
 	1    3650 3350
 	1    0    0    -1  
 $EndComp
@@ -84,6 +104,11 @@ F 0 "C11" H 4415 3446 50  0000 L CNN
 F 1 "1uF/25V" H 4415 3355 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 4338 3250 50  0001 C CNN
 F 3 "~" H 4300 3400 50  0001 C CNN
+F 4 "TDK" H 4300 3400 50  0001 C CNN "mfr"
+F 5 "FG18X7R1E105KRT00" H 4300 3400 50  0001 C CNN "mpn"
+F 6 "Mouser" H 4300 3400 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1E105KRT0" H 4300 3400 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1E105KRT0" H 4300 3400 50  0001 C CNN "Src1 URL"
 	1    4300 3400
 	1    0    0    -1  
 $EndComp
@@ -96,7 +121,12 @@ P 4900 3400
 F 0 "C12" H 5018 3446 50  0000 L CNN
 F 1 "470uF/25V" H 5018 3355 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D10.0mm_P2.50mm_P5.00mm" H 4938 3250 50  0001 C CNN
-F 3 "~" H 4900 3400 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/293/e-upw-1219485.pdf" H 4900 3400 50  0001 C CNN
+F 4 "Nichicon" H 4900 3400 50  0001 C CNN "mfr"
+F 5 "UPW1E471MPD" H 4900 3400 50  0001 C CNN "mpn"
+F 6 "Mouser" H 4900 3400 50  0001 C CNN "Src1"
+F 7 "647-UPW1E471MPD" H 4900 3400 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/647-UPW1E471MPD" H 4900 3400 50  0001 C CNN "Src1 URL"
 	1    4900 3400
 	1    0    0    -1  
 $EndComp
@@ -133,9 +163,12 @@ AR Path="/5D68B9FF/5D700221" Ref="RV1"  Part="1"
 F 0 "RV1" H 2353 3696 50  0000 L CNN
 F 1 "360V" H 2353 3605 50  0000 L CNN
 F 2 "Varistors:RV_Disc_D15.5_W7.2_P7.5" V 2180 3650 50  0001 C CNN
-F 3 "~" H 2250 3650 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/427/vdrs-101657.pdf" H 2250 3650 50  0001 C CNN
 F 4 "Vishay" H 2250 3650 50  0001 C CNN "mfr"
-F 5 "VDRS14T230BSE" H 2250 3650 50  0001 C CNN "part#"
+F 5 "VDRS14T230BSE" H 2250 3650 50  0001 C CNN "mpn"
+F 6 "Mouser" H 2250 3650 50  0001 C CNN "Src1"
+F 7 "594-2381-595-52316" H 2250 3650 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/594-2381-595-52316" H 2250 3650 50  0001 C CNN "Src1 URL"
 	1    2250 3650
 	1    0    0    -1  
 $EndComp
@@ -148,8 +181,12 @@ AR Path="/5D68B9FF/5D700227" Ref="RV2"  Part="1"
 F 0 "RV2" H 2903 3696 50  0000 L CNN
 F 1 "360V" H 2903 3605 50  0000 L CNN
 F 2 "Varistors:RV_Disc_D15.5_W7.2_P7.5" V 2730 3650 50  0001 C CNN
-F 3 "~" H 2800 3650 50  0001 C CNN
-F 4 "VDRS14T230BSE" H 2800 3650 50  0001 C CNN "part#"
+F 3 "https://www.mouser.com/datasheet/2/427/vdrs-101657.pdf" H 2800 3650 50  0001 C CNN
+F 4 "Vishay" H 2800 3650 50  0001 C CNN "mfr"
+F 5 "VDRS14T230BSE" H 2800 3650 50  0001 C CNN "mpn"
+F 6 "Mouser" H 2800 3650 50  0001 C CNN "Src1"
+F 7 "594-2381-595-52316" H 2800 3650 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/594-2381-595-52316" H 2800 3650 50  0001 C CNN "Src1 URL"
 	1    2800 3650
 	1    0    0    -1  
 $EndComp
@@ -183,7 +220,10 @@ F 1 "15V" V 5695 3479 50  0000 L CNN
 F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 5650 3400 50  0001 C CNN
 F 3 "https://www.mouser.com/datasheet/2/427/15ke-240293.pdf" H 5650 3400 50  0001 C CNN
 F 4 "Vishay" H 5650 3400 50  0001 C CNN "mfr"
-F 5 "1.5KE15CA-E3/54" H 5650 3400 50  0001 C CNN "part#"
+F 5 "1.5KE15CA-E3/54" H 5650 3400 50  0001 C CNN "mpn"
+F 6 "Mouser" H 5650 3400 50  0001 C CNN "Src1"
+F 7 "625-1.5KE15CA-E3" H 5650 3400 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/625-1.5KE15CA-E3" H 5650 3400 50  0001 C CNN "Src1 URL"
 	1    5650 3400
 	0    1    1    0   
 $EndComp
@@ -289,6 +329,7 @@ F 0 "JP1" H 7600 3900 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 7900 3700 50  0001 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_RoundedPad1.0x1.5mm" H 7600 3800 50  0001 C CNN
 F 3 "~" H 7600 3800 50  0001 C CNN
+F 4 "1" H 7600 3800 50  0000 C CNN "DNP"
 	1    7600 3800
 	1    0    0    -1  
 $EndComp
@@ -332,6 +373,7 @@ F 0 "JP2" H 7600 4150 50  0000 C CNN
 F 1 "SolderJumper_2_Bridged" H 7900 3950 50  0001 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged2Bar_RoundedPad1.0x1.5mm" H 7600 4050 50  0001 C CNN
 F 3 "~" H 7600 4050 50  0001 C CNN
+F 4 "1" H 7600 4050 50  0000 C CNN "DNP"
 	1    7600 4050
 	1    0    0    -1  
 $EndComp

@@ -22,6 +22,11 @@ F 0 "U4" H 3150 3367 50  0000 C CNN
 F 1 "ULN2003A" H 3150 3276 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_LongPads" H 3200 2150 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/uln2003a.pdf" H 3250 2500 50  0001 C CNN
+F 4 "ST" H 3150 2700 50  0001 C CNN "mfr"
+F 5 "ULN2003A" H 3150 2700 50  0001 C CNN "mpn"
+F 6 "Mouser" H 3150 2700 50  0001 C CNN "Src1"
+F 7 "511-ULN2003A" H 3150 2700 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/511-ULN2003A" H 3150 2700 50  0001 C CNN "Src1 URL"
 	1    3150 2700
 	1    0    0    -1  
 $EndComp
@@ -72,6 +77,11 @@ F 0 "K1" H 6880 2096 50  0000 L CNN
 F 1 "JS1-12V-F" H 6880 2005 50  0000 L CNN
 F 2 "Relay_THT:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 6900 2000 50  0001 L CNN
 F 3 "https://www3.panasonic.biz/ac/cdn/e/control/relay/power/catalog/mech_eng_js.pdf" H 6450 2050 50  0001 C CNN
+F 4 "Panasonic" H 6450 2050 50  0001 C CNN "mfr"
+F 5 "JS1-12V-F" H 6450 2050 50  0001 C CNN "mpn"
+F 6 "Mouser" H 6450 2050 50  0001 C CNN "Src1"
+F 7 "769-JS1-12V-F" H 6450 2050 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/769-JS1-12V-F" H 6450 2050 50  0001 C CNN "Src1 URL"
 	1    6450 2050
 	1    0    0    -1  
 $EndComp
@@ -83,6 +93,11 @@ F 0 "K2" H 6880 3046 50  0000 L CNN
 F 1 "JS1-12V-F" H 6880 2955 50  0000 L CNN
 F 2 "Relay_THT:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 6900 2950 50  0001 L CNN
 F 3 "https://www3.panasonic.biz/ac/cdn/e/control/relay/power/catalog/mech_eng_js.pdf" H 6450 3000 50  0001 C CNN
+F 4 "https://www.mouser.com/ProductDetail/769-JS1-12V-F" H 6450 3000 50  0001 C CNN "Src1 URL"
+F 5 "Panasonic" H 6450 3000 50  0001 C CNN "mfr"
+F 6 "JS1-12V-F" H 6450 3000 50  0001 C CNN "mpn"
+F 7 "Mouser" H 6450 3000 50  0001 C CNN "Src1"
+F 8 "769-JS1-12V-F" H 6450 3000 50  0001 C CNN "Src1 Part"
 	1    6450 3000
 	1    0    0    -1  
 $EndComp
@@ -94,6 +109,11 @@ F 0 "K3" H 6880 4046 50  0000 L CNN
 F 1 "JS1-12V-F" H 6880 3955 50  0000 L CNN
 F 2 "Relay_THT:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 6900 3950 50  0001 L CNN
 F 3 "https://www3.panasonic.biz/ac/cdn/e/control/relay/power/catalog/mech_eng_js.pdf" H 6450 4000 50  0001 C CNN
+F 4 "https://www.mouser.com/ProductDetail/769-JS1-12V-F" H 6450 4000 50  0001 C CNN "Src1 URL"
+F 5 "Panasonic" H 6450 4000 50  0001 C CNN "mfr"
+F 6 "JS1-12V-F" H 6450 4000 50  0001 C CNN "mpn"
+F 7 "Mouser" H 6450 4000 50  0001 C CNN "Src1"
+F 8 "769-JS1-12V-F" H 6450 4000 50  0001 C CNN "Src1 Part"
 	1    6450 4000
 	1    0    0    -1  
 $EndComp
@@ -105,6 +125,11 @@ F 0 "K4" H 6880 5096 50  0000 L CNN
 F 1 "JS1-12V-F" H 6880 5005 50  0000 L CNN
 F 2 "Relay_THT:Relay_SPDT_SANYOU_SRD_Series_Form_C" H 6900 5000 50  0001 L CNN
 F 3 "https://www3.panasonic.biz/ac/cdn/e/control/relay/power/catalog/mech_eng_js.pdf" H 6450 5050 50  0001 C CNN
+F 4 "Panasonic" H 6450 5050 50  0001 C CNN "mfr"
+F 5 "JS1-12V-F" H 6450 5050 50  0001 C CNN "mpn"
+F 6 "Mouser" H 6450 5050 50  0001 C CNN "Src1"
+F 7 "769-JS1-12V-F" H 6450 5050 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/769-JS1-12V-F" H 6450 5050 50  0001 C CNN "Src1 URL"
 	1    6450 5050
 	1    0    0    -1  
 $EndComp

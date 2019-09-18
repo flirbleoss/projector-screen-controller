@@ -24,6 +24,11 @@ F 0 "U2" H 8650 4950 50  0000 C CNN
 F 1 "MAX232I" H 8900 4950 50  0000 C CNN
 F 2 "Package_DIP:DIP-16_W7.62mm_LongPads" H 9250 2850 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/max232.pdf" H 9200 4000 50  0001 C CNN
+F 4 "TI" H 9200 3900 50  0001 C CNN "mfr"
+F 5 "MAX232IN" H 9200 3900 50  0001 C CNN "mpn"
+F 6 "Mouser" H 9200 3900 50  0001 C CNN "Src1"
+F 7 "595-MAX232IN" H 9200 3900 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/595-MAX232IN" H 9200 3900 50  0001 C CNN "Src1 URL"
 	1    9200 3900
 	1    0    0    -1  
 $EndComp
@@ -157,7 +162,12 @@ P 1000 4250
 F 0 "Y1" H 1000 4518 50  0000 C CNN
 F 1 "8MHz" H 1000 4427 50  0000 C CNN
 F 2 "Crystal:Crystal_HC49-4H_Vertical" H 1000 4250 50  0001 C CNN
-F 3 "~" H 1000 4250 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/427/xt49s-88235.pdf" H 1000 4250 50  0001 C CNN
+F 4 "Vishay" H 1000 4250 50  0001 C CNN "mfr"
+F 5 "XT9S20ANA8M" H 1000 4250 50  0001 C CNN "mpn"
+F 6 "Mouser" H 1000 4250 50  0001 C CNN "Src1"
+F 7 "73-XT49S800-20" H 1000 4250 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/73-XT49S800-20" H 1000 4250 50  0001 C CNN "Src1 URL"
 	1    1000 4250
 	1    0    0    -1  
 $EndComp
@@ -378,9 +388,14 @@ L Chris_Microcontrollers:PIC16F15345-IP U1
 U 1 1 5D79A023
 P 4700 4000
 F 0 "U1" H 2700 4700 50  0000 C CNN
-F 1 "PIC16F15345-IP" H 3100 4700 50  0000 C CNN
+F 1 "PIC16F15345-I/P" H 3100 4700 50  0000 C CNN
 F 2 "Package_DIP:DIP-20_W7.62mm_LongPads" H 4700 4000 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/40001865B.pdf" H 4700 4000 50  0001 C CNN
+F 4 "Microchip" H 4700 4000 50  0001 C CNN "mfr"
+F 5 "PIC16F15345-I/P" H 4700 4000 50  0001 C CNN "mpn"
+F 6 "Mouser" H 4700 4000 50  0001 C CNN "Src1"
+F 7 "579-PIC16F15345-I/P" H 4700 4000 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/579-PIC16F15345-I-P" H 4700 4000 50  0001 C CNN "Src1 URL"
 	1    4700 4000
 	1    0    0    -1  
 $EndComp
