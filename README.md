@@ -55,15 +55,14 @@ suppression.
 
 ## Preview
 
-![3D board preview](https://raw.githubusercontent.com/flirbleoss/projector-screen-controller/master/images/3d-preview.png)
+![3D board preview (with components)](https://raw.githubusercontent.com/flirbleoss/projector-screen-controller/master/images/3d-preview.png)
+![3D board preview (board only)](https://raw.githubusercontent.com/flirbleoss/projector-screen-controller/master/images/3d-preview-boardonly.png)
 
 
 # TODO
 
 ## Actions
 
-* Verify spacing of connectors to edge wrt the case lid.
-  * Power-side connectors probably need to move to the left by ~1mm
-* Write the firmware.
-* The TVS diode was larger than anticipated, make room.
-* The xtal load caps are larger (with wider pin spacing) than anticipated; find smaller.
+* The crystal load caps are larger (with wider pin spacing) than anticipated; find smaller.
+* Consider decoupling across grounds near relay driver.
+* Consider caps between ground and protective earth.

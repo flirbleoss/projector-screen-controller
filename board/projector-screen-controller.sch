@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Projector Screen Controller"
-Date "2019-09-16"
+Date "2019-09-21"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"

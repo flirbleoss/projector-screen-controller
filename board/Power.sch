@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 4
 Title "Projector Screen Controller"
-Date "2019-09-16"
+Date "2019-09-21"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -17,69 +17,69 @@ $EndDescr
 $Comp
 L Regulator_Linear:L78L05_TO92 U3
 U 1 1 5D6EF6FD
-P 7900 3250
-F 0 "U3" H 7900 3492 50  0000 C CNN
-F 1 "L78L05_TO92" H 7900 3401 50  0000 C CNN
-F 2 "Package_TO_SOT_THT:TO-92L" H 7900 3475 50  0001 C CIN
-F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 7900 3200 50  0001 C CNN
-F 4 "ST" H 7900 3250 50  0001 C CNN "mfr"
-F 5 "L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "mpn"
-F 6 "Mouser" H 7900 3250 50  0001 C CNN "Src1"
-F 7 "511-L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/511-L78L05ABZ-TR" H 7900 3250 50  0001 C CNN "Src1 URL"
-	1    7900 3250
+P 7900 3100
+F 0 "U3" H 7900 3342 50  0000 C CNN
+F 1 "L78L05_TO92" H 7900 3251 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-92L" H 7900 3325 50  0001 C CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 7900 3050 50  0001 C CNN
+F 4 "ST" H 7900 3100 50  0001 C CNN "mfr"
+F 5 "L78L05ABZ-TR" H 7900 3100 50  0001 C CNN "mpn"
+F 6 "Mouser" H 7900 3100 50  0001 C CNN "Src1"
+F 7 "511-L78L05ABZ-TR" H 7900 3100 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/511-L78L05ABZ-TR" H 7900 3100 50  0001 C CNN "Src1 URL"
+	1    7900 3100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7900 3550 7900 3800
+	7900 3400 7900 3800
 Wire Wire Line
-	8550 3250 8200 3250
+	8550 3100 8200 3100
 Wire Wire Line
-	7250 3250 7600 3250
+	7250 3100 7600 3100
 $Comp
 L Device:C C9
 U 1 1 5D6F3384
-P 7250 3550
-F 0 "C9" H 7365 3596 50  0000 L CNN
-F 1 "0.33uF" H 7365 3505 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 7288 3400 50  0001 C CNN
-F 3 "~" H 7250 3550 50  0001 C CNN
-F 4 "TDK" H 7250 3550 50  0001 C CNN "mfr"
-F 5 "FG18X7R1H334KRT00" H 7250 3550 50  0001 C CNN "mpn"
-F 6 "Mouser" H 7250 3550 50  0001 C CNN "Src1"
-F 7 "810-FG18X7R1H334KRT0" H 7250 3550 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H334KRT0" H 7250 3550 50  0001 C CNN "Src1 URL"
-	1    7250 3550
+P 7250 3400
+F 0 "C9" H 7365 3446 50  0000 L CNN
+F 1 "0.33uF" H 7365 3355 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 7288 3250 50  0001 C CNN
+F 3 "~" H 7250 3400 50  0001 C CNN
+F 4 "TDK" H 7250 3400 50  0001 C CNN "mfr"
+F 5 "FG18X7R1H334KRT00" H 7250 3400 50  0001 C CNN "mpn"
+F 6 "Mouser" H 7250 3400 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1H334KRT0" H 7250 3400 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H334KRT0" H 7250 3400 50  0001 C CNN "Src1 URL"
+	1    7250 3400
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C10
 U 1 1 5D6F4B58
-P 8550 3550
-F 0 "C10" H 8665 3596 50  0000 L CNN
-F 1 "0.1uF" H 8665 3505 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 8588 3400 50  0001 C CNN
-F 3 "~" H 8550 3550 50  0001 C CNN
-F 4 "TDK" H 8550 3550 50  0001 C CNN "mfr"
-F 5 "FG18X7R1H104KNT06" H 8550 3550 50  0001 C CNN "mpn"
-F 6 "Mouser" H 8550 3550 50  0001 C CNN "Src1"
-F 7 "810-FG18X7R1H104KNT6" H 8550 3550 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H104KNT6" H 8550 3550 50  0001 C CNN "Src1 URL"
-	1    8550 3550
+P 8550 3400
+F 0 "C10" H 8665 3446 50  0000 L CNN
+F 1 "0.1uF" H 8665 3355 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 8588 3250 50  0001 C CNN
+F 3 "~" H 8550 3400 50  0001 C CNN
+F 4 "TDK" H 8550 3400 50  0001 C CNN "mfr"
+F 5 "FG18X7R1H104KNT06" H 8550 3400 50  0001 C CNN "mpn"
+F 6 "Mouser" H 8550 3400 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1H104KNT6" H 8550 3400 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1H104KNT6" H 8550 3400 50  0001 C CNN "Src1 URL"
+	1    8550 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8550 3700 8550 3800
+	8550 3550 8550 3800
 Wire Wire Line
 	8550 3800 7900 3800
 Wire Wire Line
-	7250 3800 7250 3700
+	7250 3800 7250 3550
 Wire Wire Line
-	7250 3250 7250 3400
-Connection ~ 7250 3250
+	7250 3100 7250 3250
+Connection ~ 7250 3100
 Wire Wire Line
-	8550 3250 8550 3400
-Connection ~ 8550 3250
+	8550 3100 8550 3250
+Connection ~ 8550 3100
 $Comp
 L Chris_Power:PSK-S20C-12 PS1
 U 1 1 5D779061
@@ -99,17 +99,17 @@ $EndComp
 $Comp
 L Device:C C11
 U 1 1 5D77B64E
-P 4300 3400
-F 0 "C11" H 4415 3446 50  0000 L CNN
-F 1 "1uF/25V" H 4415 3355 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 4338 3250 50  0001 C CNN
-F 3 "~" H 4300 3400 50  0001 C CNN
-F 4 "TDK" H 4300 3400 50  0001 C CNN "mfr"
-F 5 "FG18X7R1E105KRT00" H 4300 3400 50  0001 C CNN "mpn"
-F 6 "Mouser" H 4300 3400 50  0001 C CNN "Src1"
-F 7 "810-FG18X7R1E105KRT0" H 4300 3400 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1E105KRT0" H 4300 3400 50  0001 C CNN "Src1 URL"
-	1    4300 3400
+P 4450 3200
+F 0 "C11" H 4565 3246 50  0000 L CNN
+F 1 "1uF/25V" H 4565 3155 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 4488 3050 50  0001 C CNN
+F 3 "~" H 4450 3200 50  0001 C CNN
+F 4 "TDK" H 4450 3200 50  0001 C CNN "mfr"
+F 5 "FG18X7R1E105KRT00" H 4450 3200 50  0001 C CNN "mpn"
+F 6 "Mouser" H 4450 3200 50  0001 C CNN "Src1"
+F 7 "810-FG18X7R1E105KRT0" H 4450 3200 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18X7R1E105KRT0" H 4450 3200 50  0001 C CNN "Src1 URL"
+	1    4450 3200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -117,17 +117,17 @@ Wire Wire Line
 $Comp
 L Device:CP C12
 U 1 1 5D77F0B2
-P 4900 3400
-F 0 "C12" H 5018 3446 50  0000 L CNN
-F 1 "470uF/25V" H 5018 3355 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D10.0mm_P2.50mm_P5.00mm" H 4938 3250 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/293/e-upw-1219485.pdf" H 4900 3400 50  0001 C CNN
-F 4 "Nichicon" H 4900 3400 50  0001 C CNN "mfr"
-F 5 "UPW1E471MPD" H 4900 3400 50  0001 C CNN "mpn"
-F 6 "Mouser" H 4900 3400 50  0001 C CNN "Src1"
-F 7 "647-UPW1E471MPD" H 4900 3400 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/647-UPW1E471MPD" H 4900 3400 50  0001 C CNN "Src1 URL"
-	1    4900 3400
+P 5150 3200
+F 0 "C12" H 5268 3246 50  0000 L CNN
+F 1 "470uF/25V" H 5268 3155 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D10.0mm_P2.50mm_P5.00mm" H 5188 3050 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/293/e-upw-1219485.pdf" H 5150 3200 50  0001 C CNN
+F 4 "Nichicon" H 5150 3200 50  0001 C CNN "mfr"
+F 5 "UPW1E471MPD" H 5150 3200 50  0001 C CNN "mpn"
+F 6 "Mouser" H 5150 3200 50  0001 C CNN "Src1"
+F 7 "647-UPW1E471MPD" H 5150 3200 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/647-UPW1E471MPD" H 5150 3200 50  0001 C CNN "Src1 URL"
+	1    5150 3200
 	1    0    0    -1  
 $EndComp
 Text HLabel 1700 3250 0    50   Input ~ 0
@@ -141,14 +141,14 @@ Wire Wire Line
 Text HLabel 9650 2500 2    50   Output ~ 0
 +12V
 Wire Wire Line
-	7250 2500 7250 3250
+	7250 2500 7250 3100
 Connection ~ 7250 2500
 Wire Wire Line
 	7250 2500 8950 2500
 Text HLabel 9650 2650 2    50   Output ~ 0
 +5V
 Wire Wire Line
-	8550 2650 8550 3250
+	8550 2650 8550 3100
 Text HLabel 9600 3800 2    50   BiDi ~ 0
 GND
 Wire Wire Line
@@ -214,23 +214,23 @@ Wire Wire Line
 $Comp
 L Device:D_TVS D5
 U 1 1 5D7077D8
-P 5650 3400
-F 0 "D5" V 5604 3479 50  0000 L CNN
-F 1 "15V" V 5695 3479 50  0000 L CNN
-F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 5650 3400 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/427/15ke-240293.pdf" H 5650 3400 50  0001 C CNN
-F 4 "Vishay" H 5650 3400 50  0001 C CNN "mfr"
-F 5 "1.5KE15CA-E3/54" H 5650 3400 50  0001 C CNN "mpn"
-F 6 "Mouser" H 5650 3400 50  0001 C CNN "Src1"
-F 7 "625-1.5KE15CA-E3" H 5650 3400 50  0001 C CNN "Src1 Part"
-F 8 "https://www.mouser.com/ProductDetail/625-1.5KE15CA-E3" H 5650 3400 50  0001 C CNN "Src1 URL"
-	1    5650 3400
+P 5900 3200
+F 0 "D5" V 5854 3279 50  0000 L CNN
+F 1 "15V" V 5945 3279 50  0000 L CNN
+F 2 "Diodes_THT:D_DO-41_SOD81_P12.70mm_Horizontal" H 5900 3200 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/427/15ke-240293.pdf" H 5900 3200 50  0001 C CNN
+F 4 "Vishay" H 5900 3200 50  0001 C CNN "mfr"
+F 5 "1.5KE15CA-E3/54" H 5900 3200 50  0001 C CNN "mpn"
+F 6 "Mouser" H 5900 3200 50  0001 C CNN "Src1"
+F 7 "625-1.5KE15CA-E3" H 5900 3200 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/625-1.5KE15CA-E3" H 5900 3200 50  0001 C CNN "Src1 URL"
+	1    5900 3200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5650 3550 5650 3800
+	5900 3350 5900 3800
 Wire Wire Line
-	5650 3250 5650 2500
+	5900 3050 5900 2500
 $Comp
 L Device:LED D6
 U 1 1 5D70BFF3
@@ -288,18 +288,18 @@ Wire Wire Line
 Wire Wire Line
 	9300 2800 9300 2650
 Wire Wire Line
-	4150 3800 4300 3800
-Connection ~ 5650 3800
+	4150 3800 4450 3800
+Connection ~ 5900 3800
 Wire Wire Line
-	4900 3550 4900 3800
-Connection ~ 4900 3800
+	5150 3350 5150 3800
+Connection ~ 5150 3800
 Wire Wire Line
-	4900 3800 5650 3800
+	5150 3800 5900 3800
 Wire Wire Line
-	4300 3550 4300 3800
-Connection ~ 4300 3800
+	4450 3350 4450 3800
+Connection ~ 4450 3800
 Wire Wire Line
-	4300 3800 4900 3800
+	4450 3800 5150 3800
 Wire Wire Line
 	4150 3450 4150 3800
 Wire Wire Line
@@ -307,18 +307,18 @@ Wire Wire Line
 Wire Wire Line
 	4150 3250 4150 2500
 Wire Wire Line
-	4150 2500 4300 2500
-Connection ~ 5650 2500
+	4150 2500 4450 2500
+Connection ~ 5900 2500
 Wire Wire Line
-	4900 3250 4900 2500
-Connection ~ 4900 2500
+	5150 3050 5150 2500
+Connection ~ 5150 2500
 Wire Wire Line
-	4900 2500 5650 2500
+	5150 2500 5900 2500
 Wire Wire Line
-	4300 3250 4300 2500
-Connection ~ 4300 2500
+	4450 3050 4450 2500
+Connection ~ 4450 2500
 Wire Wire Line
-	4300 2500 4900 2500
+	4450 2500 5150 2500
 $Comp
 L Jumper:SolderJumper_2_Bridged JP?
 U 1 1 5D7501DC
@@ -348,9 +348,9 @@ Wire Wire Line
 	8950 2500 9650 2500
 Connection ~ 8950 3800
 Wire Wire Line
-	5650 3800 7250 3800
+	5900 3800 7250 3800
 Wire Wire Line
-	5650 2500 7250 2500
+	5900 2500 7250 2500
 Connection ~ 9300 2650
 Wire Wire Line
 	9300 2650 9650 2650
