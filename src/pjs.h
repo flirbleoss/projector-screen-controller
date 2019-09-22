@@ -34,21 +34,25 @@ void command_check(void);
 void button_check_channel(relay_channel_t channel, char up, char dn);
 
 // UART handling
-#define UART_1 0
-#define UART_2 1
+typedef enum {
+    UART_1 = 0,
+    UART_2
+} uart_unit_t;
 
-#define UART_NONBLOCK 0
-#define UART_BLOCK 1
+typedef enum {
+    UART_NONBLOCK = 0,
+    UART_BLOCK
+} uart_blocking_t;
 
 void uart_init(void);
-void uart_sendch(char uart, unsigned char ch);
-void uart_send(char uart, unsigned char *ch);
-unsigned char uart_recvch(char uart, char block);
-char uart_recvempty(char uart);
+void uart_sendch(uart_unit_t uart, unsigned char ch);
+void uart_send(uart_unit_t uart, unsigned char *ch);
+unsigned char uart_recvch(uart_unit_t uart, uart_blocking_t block);
+char uart_recvempty(uart_unit_t uart);
 #ifdef WANT_UART_RECVCOUNT
-char uart_recvcount(char uart);
+char uart_recvcount(uart_unit_t uart);
 #endif /* WANT_UART_RECVCOUNT */
-void uart_int_send(char uart);
-void uart_int_recv(char uart);
+void uart_int_send(uart_unit_t uart);
+void uart_int_recv(uart_unit_t uart);
 
 #endif	/* _PJS_H */

@@ -13,15 +13,15 @@
 #define CMD_BUF_SIZ 4
 
 struct ser_control {
-    char uart;  // Reference to the associated UART
-    char len;   // Number of accumulated characters
+    uart_unit_t uart;       // Reference to the associated UART
+    char len;               // Number of accumulated characters
     char buf[CMD_BUF_SIZ];  // character buffer
 };
 
-enum {
-    SER_CTRL_1,
+typedef enum {
+    SER_CTRL_1 = 0,
     SER_CTRL_2,
-};
+} ser_ctrl_t;
 
 volatile struct ser_control ser_controls[] = {
     {
@@ -37,11 +37,11 @@ volatile struct ser_control ser_controls[] = {
 // Control handling
 
 void control_init(void) {
-    ser_controls[0].len = 0;
-    ser_controls[1].len = 0;
+    ser_controls[SER_CTRL_1].len = 0;
+    ser_controls[SER_CTRL_2].len = 0;
 }
 
-static void command_check_ser(char ctrl) {
+static void command_check_ser(ser_ctrl_t ctrl) {
     volatile struct ser_control *c = &ser_controls[ctrl];
     char uart = c->uart;
 
@@ -126,7 +126,7 @@ static void command_check_ser(char ctrl) {
 
 void command_check(void) {
     command_check_ser(SER_CTRL_1);
-    command_check_ser(SER_CTRL_1);
+    command_check_ser(SER_CTRL_2);
 }
 
 void button_check_channel(relay_channel_t channel, char up, char dn) {

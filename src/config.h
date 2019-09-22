@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#define VERSION "0.1"
+#define VERSION "0.2"
 
 // Which version of the board to target
 #define BOARD_REV_0_1

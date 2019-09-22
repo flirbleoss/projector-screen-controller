@@ -60,7 +60,7 @@ void uart_init(void) {
     uarts[UART_2].tx_lo = uarts[UART_2].rx_lo = 0;
 }
 
-void uart_sendch(char uart, unsigned char ch) {
+void uart_sendch(uart_unit_t uart, unsigned char ch) {
     volatile struct uart *u = UARTP(uart);
 
     while (RB_FULL(u, tx)) {
@@ -79,14 +79,14 @@ void uart_sendch(char uart, unsigned char ch) {
     else TX2IE = 1;
 }
 
-void uart_send(char uart, unsigned char *ch) {
+void uart_send(uart_unit_t uart, unsigned char *ch) {
     while (*ch) {
         uart_sendch(uart, *ch);
         ch++;
     }
 }
 
-unsigned char uart_recvch(char uart, char block) {
+unsigned char uart_recvch(uart_unit_t uart, uart_blocking_t block) {
     volatile struct uart *u = UARTP(uart);
 
     if (block != UART_NONBLOCK) {
@@ -108,14 +108,14 @@ unsigned char uart_recvch(char uart, char block) {
     return c;
 }
 
-char uart_recvempty(char uart) {
+char uart_recvempty(uart_unit_t uart) {
     volatile struct uart *u = UARTP(uart);
 
     return (char) RB_EMPTY(u, rx);
 }
 
 #ifdef WANT_UART_RECVCOUNT
-char uart_recvcount(char uart) {
+char uart_recvcount(uart_unit_t uart) {
     volatile struct uart *u = UARTP(uart);
 
     return (char) RB_COUNT(u, rx);
@@ -134,7 +134,7 @@ void putch(unsigned char ch)
 
 // Interrupt-driven functions
 
-void uart_int_send(char uart) {
+void uart_int_send(uart_unit_t uart) {
     volatile struct uart *u = UARTP(uart);
 
     if (!RB_EMPTY(u, tx)) {
@@ -153,7 +153,7 @@ void uart_int_send(char uart) {
     }
 }
 
-void uart_int_recv(char uart) {
+void uart_int_recv(uart_unit_t uart) {
     volatile struct uart *u = UARTP(uart);
 
     while ((uart == UART_1 && RC1IF) || (uart == UART_2 && RC2IF)) {
