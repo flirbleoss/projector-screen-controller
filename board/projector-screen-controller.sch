@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 4
 Title "Projector Screen Controller"
-Date "2019-09-21"
+Date "2019-09-22"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -512,4 +512,30 @@ F 8 "https://www.mouser.com/ProductDetail/651-1924208" H 1400 5300 50  0001 C CN
 	1    1400 5300
 	-1   0    0    -1  
 $EndComp
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 5D8CE4E9
+P 9050 4550
+F 0 "H3" H 9150 4599 50  0000 L CNN
+F 1 "MountingHole_Pad" V 8900 4500 50  0000 L CNN
+F 2 "Mounting_Holes:MountingHole_3.7mm_Pad_Via" H 9050 4550 50  0001 C CNN
+F 3 "~" H 9050 4550 50  0001 C CNN
+F 4 "1" H 9050 4550 50  0000 C CNN "DNP"
+	1    9050 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 5D8D01BB
+P 9500 4550
+F 0 "H4" H 9600 4599 50  0000 L CNN
+F 1 "MountingHole_Pad" V 9350 4500 50  0000 L CNN
+F 2 "Mounting_Holes:MountingHole_3.7mm_Pad_Via" H 9500 4550 50  0001 C CNN
+F 3 "~" H 9500 4550 50  0001 C CNN
+F 4 "1" H 9500 4550 50  0000 C CNN "DNP"
+	1    9500 4550
+	1    0    0    -1  
+$EndComp
+NoConn ~ 9050 4650
+NoConn ~ 9500 4650
 $EndSCHEMATC

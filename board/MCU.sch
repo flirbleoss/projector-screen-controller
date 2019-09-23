@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 4
 Title "Projector Screen Controller"
-Date "2019-09-21"
+Date "2019-09-22"
 Rev "0.2"
 Comp "Flirble Open Source"
 Comment1 "https://github.com/flirbleoss/projector-screen-controller"
@@ -176,9 +176,14 @@ L Device:C C3
 U 1 1 5D69CCF0
 P 850 4550
 F 0 "C3" H 650 4600 50  0000 L CNN
-F 1 "20pF" H 550 4500 50  0000 L CNN
+F 1 "330pF" H 550 4500 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 888 4400 50  0001 C CNN
-F 3 "~" H 850 4550 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/400/eadmlcc_halogenfree_fg_en-775693.pdf" H 850 4550 50  0001 C CNN
+F 4 "TDK" H 850 4550 50  0001 C CNN "mfr"
+F 5 "FG18C0G1H330JNT06" H 850 4550 50  0001 C CNN "mpn"
+F 6 "Mouser" H 850 4550 50  0001 C CNN "Src1"
+F 7 "810-FG18C0G1H330JNT6" H 850 4550 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18C0G1H330JNT6" H 850 4550 50  0001 C CNN "Src1 URL"
 	1    850  4550
 	1    0    0    -1  
 $EndComp
@@ -187,9 +192,14 @@ L Device:C C4
 U 1 1 5D69D3F0
 P 1150 4550
 F 0 "C4" H 1250 4600 50  0000 L CNN
-F 1 "20pF" H 1250 4500 50  0000 L CNN
+F 1 "33pF" H 1250 4500 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 1188 4400 50  0001 C CNN
-F 3 "~" H 1150 4550 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/400/eadmlcc_halogenfree_fg_en-775693.pdf" H 1150 4550 50  0001 C CNN
+F 4 "TDK" H 1150 4550 50  0001 C CNN "mfr"
+F 5 "FG18C0G1H330JNT06" H 1150 4550 50  0001 C CNN "mpn"
+F 6 "Mouser" H 1150 4550 50  0001 C CNN "Src1"
+F 7 "810-FG18C0G1H330JNT6" H 1150 4550 50  0001 C CNN "Src1 Part"
+F 8 "https://www.mouser.com/ProductDetail/810-FG18C0G1H330JNT6" H 1150 4550 50  0001 C CNN "Src1 URL"
 	1    1150 4550
 	1    0    0    -1  
 $EndComp
