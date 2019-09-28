@@ -176,7 +176,7 @@ L Device:C C3
 U 1 1 5D69CCF0
 P 850 4550
 F 0 "C3" H 650 4600 50  0000 L CNN
-F 1 "330pF" H 550 4500 50  0000 L CNN
+F 1 "33pF" H 550 4500 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 888 4400 50  0001 C CNN
 F 3 "https://www.mouser.com/datasheet/2/400/eadmlcc_halogenfree_fg_en-775693.pdf" H 850 4550 50  0001 C CNN
 F 4 "TDK" H 850 4550 50  0001 C CNN "mfr"

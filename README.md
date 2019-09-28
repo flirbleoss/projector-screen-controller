@@ -57,12 +57,3 @@ suppression.
 
 ![3D board preview (with components)](https://raw.githubusercontent.com/flirbleoss/projector-screen-controller/master/images/3d-preview.png)
 ![3D board preview (board only)](https://raw.githubusercontent.com/flirbleoss/projector-screen-controller/master/images/3d-preview-boardonly.png)
-
-
-# TODO
-
-## Actions
-
-* The crystal load caps are larger (with wider pin spacing) than anticipated; find smaller.
-* Consider decoupling across grounds near relay driver.
-* Consider caps between ground and protective earth.
